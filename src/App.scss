@@ -1,0 +1,14 @@
+@use "./assets/sass/base.scss" as *; 
+@use "./assets/sass/typography.scss" as *;
+
+.App {
+    background-color: $color-background;
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    height: 100vh;
+}
