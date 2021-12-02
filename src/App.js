@@ -1,6 +1,7 @@
 
 import './App.scss';
 import Nav from './components/Nav/Nav';
+import Home from "./components/Home/Home"
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
     </header>
     <main>
     <Nav/>
+    <Home className = "Home"/>
     </main>
     </div>
     </>

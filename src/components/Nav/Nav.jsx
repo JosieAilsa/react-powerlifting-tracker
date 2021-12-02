@@ -14,10 +14,10 @@ const Nav = () => {
                 </g>
             </g>
             </svg>
-            <ul className = "nav__links">
-                <li>Profile</li>
-                <li>View Programme</li>
-                <li>Settings</li>
+            <ul className = "nav__container">
+               <a href ="#"> <li className = "nav__link">Profile</li> </a>
+               <a href ="#"> <li className = "nav__link">View Programme</li> </a>
+               <a href ="#"> <li className = "nav__link">Settings</li> </a>
             </ul>
         </nav>
         </>

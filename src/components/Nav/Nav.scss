@@ -13,17 +13,19 @@
      background-color: $color-red;
      padding: 2.5vmin 2.5vmin;
      font-weight: 700;
-     color: $color-background;
      font-size: 1.5em;
+     color: $color-background;
  }
 
  &__hamburger{
-     display: none;
- }
+        @media only screen and (min-width: 600px) {
+            display: none;
+        }
+    }
 
- &__links{
+ &__container{
      display: flex;
-     width: 25vw;
+     width: 35vw;
      list-style-type: none;
      justify-content: space-between;
      color: $color-background;
@@ -31,9 +33,11 @@
      @media only screen and (max-width: 600px) {
     display: none;
     }
-&__links > * {
+    }
+.nav__link{
     font-weight: 600;
     font-size: 1.25em;
+    color: $color-background;
     }
  }
-}x
+
