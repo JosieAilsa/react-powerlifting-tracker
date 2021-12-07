@@ -1,6 +1,7 @@
 import "./Nav.scss";
 
-const Nav = () => {
+const Nav = ({toggleLiftList, toggleShowForm}) => {
+
     return (
         <>
         <nav className = "nav">
@@ -15,9 +16,8 @@ const Nav = () => {
             </g>
             </svg>
             <ul className = "nav__container">
-               <a href ="#"> <li className = "nav__link">Profile</li> </a>
-               <a href ="#"> <li className = "nav__link">View Programme</li> </a>
-               <a href ="#"> <li className = "nav__link">Settings</li> </a>
+            <li className = "nav__link" onClick = {toggleShowForm}>Add Lift</li>
+            <li className = "nav__link" onClick = {toggleLiftList}>Logged lifts</li>
             </ul>
         </nav>
         </>

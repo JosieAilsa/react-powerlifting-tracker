@@ -1,7 +1,14 @@
 
 import "./LevelSlider.scss"
+import { useState } from "react";
 
-const LevelSlider = () => {
+const LevelSlider = ({handleDifficultyInput}) => {
+    const[difficulty,setDifficulty] = useState("")
+    const handleInput = (e) => {
+        const currentDifficulty = e.target.value
+        setDifficulty(currentDifficulty)
+        handleDifficultyInput(currentDifficulty)
+    }
     return (
     <>
     <div class="difficulty">
@@ -11,7 +18,7 @@ const LevelSlider = () => {
             <p class = "slider__label">Easy</p>
             <p class = "slider__label">Hard</p>
         </div>
-        <input type="range" min="1" max="100" class="slider__input" id="myRange"/>
+        <input  className = "input slider__input" type="range" min="1" max="100" value={difficulty} onChange = {handleInput}  id="myRange"/>
         </div>
     </div>
     </>
