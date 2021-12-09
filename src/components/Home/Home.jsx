@@ -7,11 +7,20 @@ import LiftListContainer from '../../containers/LiftListContainer/LiftListContai
 
 
 const Home = () => {
+    const filterDefault = [
+        {type: "Deadlift", isChecked: false},
+        {type: "Squat", isChecked: false},
+        {type:  "Overhead press", isChecked: false},
+        {type: "Bent-over row", isChecked: false},
+        {type: "Bench press", isChecked: false}
+    ]
+
     const [currentLift, setCurrentLift] = useState({});
     const [allLiftsLogged, setAllLoggedLifts] = useState([]);
     // const [showNavMenu, setNavmenu] = useState(false);
     const [showLiftList, setLiftList] = useState(false);
     const [showForm, setShowForm] = useState(true)
+    const [filters, setFilters] = useState(filterDefault);  
 
 
     const handleLiftSelect = (e) => {
@@ -31,6 +40,7 @@ const Home = () => {
     const handleWeightInput = (e) => {
         const kgInput = e.target.value;
         const updatedLift = {...currentLift}
+        parseFloat(updatedLift)
         updatedLift.weight = kgInput
         console.log(updatedLift)
         setCurrentLift(updatedLift)
@@ -74,9 +84,8 @@ const Home = () => {
         return ( 
         <>
         <Nav toggleLiftList = {toggleLiftList} toggleShowForm = {toggleShowForm}/>
-        <MainTitle title = "Record Lift" />
         {showForm && <LiftForm handleLiftSelect  = {handleLiftSelect} handleWeightInput = {handleWeightInput} handleDifficultyInput= {handleDifficultyInput} handleClick = {handleClick}/>}
-        {showLiftList && < LiftListContainer allLiftsLogged = {allLiftsLogged}/>}
+        {showLiftList && < LiftListContainer allLiftsLogged = {allLiftsLogged} filters = {filters}/>}
         </>
     );
 }

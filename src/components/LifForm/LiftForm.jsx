@@ -12,10 +12,14 @@ const liftsArr = ["Deadlift", "Squat", "Overhead press", "Bent-over row", "Bench
 
     return ( 
         <>
+         <MainTitle title = "Record Lift" />
         <form className = "form">
         <SelectLift liftsArr = {liftsArr} handleLiftSelect  = {handleLiftSelect}/>
         <WeightInput handleWeightInput = {handleWeightInput}/>
-        <LevelSlider handleDifficultyInput= {handleDifficultyInput}/>
+        <div class="difficulty">
+        <h4 className = "difficulty__title">How did it feel?</h4>
+        <LevelSlider handleDifficultyInput= {handleDifficultyInput} bottomTitle= "Easy" topTitle = "Hard" min = "1" max = "100"/>
+        </div>
         <Button type= "reset" handleClick = {handleClick} title = {"Add next lift"}/>
         </form>
         </>
