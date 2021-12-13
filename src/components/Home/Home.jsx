@@ -8,16 +8,15 @@ import LiftListContainer from '../../containers/LiftListContainer/LiftListContai
 
 const Home = () => {
     const filterDefault = [
-        {type: "Deadlift", isChecked: false},
-        {type: "Squat", isChecked: false},
-        {type:  "Overhead press", isChecked: false},
-        {type: "Bent-over row", isChecked: false},
-        {type: "Bench press", isChecked: false}
+        {type: "Deadlift", isChecked: false, difficulty: "",},
+        {type: "Squat", isChecked: false, difficulty: ""},
+        {type:  "Overhead press", isChecked: false, difficulty: ""},
+        {type: "Bent-over row", isChecked: false, difficulty: ""},
+        {type: "Bench press", isChecked: false, difficulty: ""}
     ]
-
+    const [newlevel, setLevel] = useState("moderate")
     const [currentLift, setCurrentLift] = useState({});
     const [allLiftsLogged, setAllLoggedLifts] = useState([]);
-    // const [showNavMenu, setNavmenu] = useState(false);
     const [showLiftList, setLiftList] = useState(false);
     const [showForm, setShowForm] = useState(true)
     const [filters, setFilters] = useState(filterDefault);  
@@ -74,18 +73,17 @@ const Home = () => {
         setLiftList(!showLiftList) 
         setShowForm(!showForm)
     }
-    //How can I add function in as params to make these into one function 
-
     const toggleShowForm = () => {
         setShowForm(!showForm)
         setLiftList(!showLiftList) 
     }
 
+
         return ( 
         <>
         <Nav toggleLiftList = {toggleLiftList} toggleShowForm = {toggleShowForm}/>
         {showForm && <LiftForm handleLiftSelect  = {handleLiftSelect} handleWeightInput = {handleWeightInput} handleDifficultyInput= {handleDifficultyInput} handleClick = {handleClick}/>}
-        {showLiftList && < LiftListContainer allLiftsLogged = {allLiftsLogged} filters = {filters}/>}
+        {showLiftList && < LiftListContainer allLiftsLogged = {allLiftsLogged} filters = {filters} />}
         </>
     );
 }

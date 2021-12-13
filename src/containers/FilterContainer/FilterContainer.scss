@@ -3,4 +3,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
+
+    .difficulty-container{
+        width: 50%;
+    
+    .difficulty-filter{
+        width: 100%;
+    }
+//     .difficulty-filter::-webkit-slider-thumb {
+//         background-image: ;
+//     } 
+    }
+
+    
 }

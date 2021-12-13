@@ -1,4 +1,4 @@
-const showDifficulty = (currentValue) => {
+const showDifficulty = (difficulty) => {
     if (difficulty >= 90) {
         return "very hard"
     } else if (difficulty >= 80) {
@@ -11,3 +11,4 @@ const showDifficulty = (currentValue) => {
         return "very easy"
     }
 }
+export default showDifficulty;

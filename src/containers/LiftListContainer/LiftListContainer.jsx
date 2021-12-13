@@ -16,7 +16,7 @@ const LiftListContainer = ({allLiftsLogged, filters}) => {
 
  return (
     <>
-    <FilterContainer filters = {filters}/>
+    <FilterContainer filters = {filters} />
     <div className = "card-container">
     {allLiftsLoggedJSX}
     </div> 
