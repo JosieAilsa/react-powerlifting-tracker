@@ -33,7 +33,7 @@
     cursor: pointer;
   }
 
-  .slider::-moz-range-thumb {
+  .slider--moderate::-moz-range-thumb {
     width: 23px;
     height: 25px;
     border: 0;
@@ -56,11 +56,11 @@
     cursor: pointer;
   }
 
-  .slider--very-easy::-moz-range-thumb {
+  .slider--easy::-moz-range-thumb {
     width: 23px;
     height: 25px;
     border: 0;
-    background: url('../../assets/images/veryEasy.png');
+    background: url('../../assets/images/easy.png');
     cursor: pointer;
   }
 
@@ -85,9 +85,30 @@
     background: url('../../assets/images/veryEasy.png');
     cursor: pointer;
   }
+//Hard
+.slider--hard::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50%;
+  background-image: url('../../assets/images/hard.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.slider--hard::-moz-range-thumb {
+  width: 23px;
+  height: 25px;
+  border: 0;
+  background: url('../../assets/images/hard.png');
+  cursor: pointer;
+}
 
 //VERY Hard
-    .slider--very-easy::-webkit-slider-thumb {
+    .slider--very-hard::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         border: 0;
@@ -100,7 +121,7 @@
         height: 20px;
         cursor: pointer;
       }
-      .slider--very-easy::-moz-range-thumb {
+      .slider--very-hard::-moz-range-thumb {
         width: 23px;
         height: 25px;
         border: 0;

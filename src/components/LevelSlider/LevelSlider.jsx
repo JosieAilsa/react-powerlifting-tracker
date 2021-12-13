@@ -5,11 +5,16 @@ import Slider from "../Slider/Slider";
 import showDifficulty  from "../../utils/string-helpers";
 
 const LevelSlider = ({handleDifficultyInput}) => {
-
+  const[difficulty,setDifficulty] = useState("")
+   
+    const handleInput = (e) => {
+        setDifficulty(e)
+        handleDifficultyInput(e)
+    }
 
     return (
     <div>
-        <Slider className = "input slider__input" min="1" max="100" bottomTitle="Very easy" topTitle="Very hard" handleDifficultyInput = {handleDifficultyInput}/>
+        <Slider className = "input slider__input" bottomTitle="Very easy" topTitle="Very hard" difficulty ={difficulty} handleInput = {handleInput}/>
     </div>
     );
 }

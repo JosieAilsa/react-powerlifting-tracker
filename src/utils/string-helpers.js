@@ -1,13 +1,14 @@
 const showDifficulty = (difficulty) => {
-    if (difficulty >= 90) {
+    const toInteger = parseInt(difficulty);
+    if (toInteger > 90) {
         return "very hard"
-    } else if (difficulty >= 80) {
+    } else if (toInteger < 80 && toInteger >= 60) {
         return "hard"
-    } else if (difficulty >= 40) {
-        return"moderate"
-    } else if (difficulty >= 20) {
+    } else if (toInteger < 60 && toInteger >=30) {
+        return "moderate"
+    } else if (toInteger < 30 && toInteger > 10) {
         return "easy"
-    } else {
+    } else if (toInteger < 10) {
         return "very easy"
     }
 }
