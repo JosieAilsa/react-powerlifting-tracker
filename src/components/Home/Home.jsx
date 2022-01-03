@@ -1,26 +1,19 @@
 import {useState, useEffect} from 'react';
 import MainTitle from "../MainTitle/MainTitle";
-import LiftForm from '../LifForm/LiftForm';
+import LiftForm from '../../containers/LifForm/LiftForm';
 import Nav from '../Nav/Nav' 
 import LiftListContainer from '../../containers/LiftListContainer/LiftListContainer';
-
+import { Routes, Route } from 'react-router-dom';
+import showDifficulty from "../../utils/string-helpers"
 
 
 const Home = () => {
-    const filterDefault = [
-        {type: "Deadlift", isChecked: false, difficulty: "",},
-        {type: "Squat", isChecked: false, difficulty: ""},
-        {type:  "Overhead press", isChecked: false, difficulty: ""},
-        {type: "Bent-over row", isChecked: false, difficulty: ""},
-        {type: "Bench press", isChecked: false, difficulty: ""}
-    ]
+
     const [newlevel, setLevel] = useState("moderate")
     const [currentLift, setCurrentLift] = useState({});
     const [allLiftsLogged, setAllLoggedLifts] = useState([]);
     const [showLiftList, setLiftList] = useState(false);
-    const [showForm, setShowForm] = useState(true)
-    const [filters, setFilters] = useState(filterDefault);  
-
+    const [showForm, setShowForm] = useState(true);
 
     const handleLiftSelect = (e) => {
         console.log("event fires")
@@ -49,6 +42,7 @@ const Home = () => {
         const difficulty = e;
         const updatedLift = {...currentLift}
         updatedLift.difficulty = difficulty
+        updatedLift.level = showDifficulty(difficulty)
         console.log(updatedLift)
         setCurrentLift(updatedLift)
 
@@ -82,8 +76,14 @@ const Home = () => {
         return ( 
         <>
         <Nav toggleLiftList = {toggleLiftList} toggleShowForm = {toggleShowForm}/>
-        {showForm && <LiftForm handleLiftSelect  = {handleLiftSelect} handleWeightInput = {handleWeightInput} handleDifficultyInput= {handleDifficultyInput} handleClick = {handleClick}/>}
-        {showLiftList && < LiftListContainer allLiftsLogged = {allLiftsLogged} filters = {filters} />}
+            <Routes>
+            <Route path = "/addLift" 
+                element = {showForm && <LiftForm handleLiftSelect  = {handleLiftSelect} handleWeightInput = {handleWeightInput} handleDifficultyInput= {handleDifficultyInput} handleClick = {handleClick}/>}
+            />
+            <Route path = "/showLifts"
+                element =  {showLiftList && < LiftListContainer allLiftsLogged = {allLiftsLogged} />}
+            />
+        </Routes>
         </>
     );
 }

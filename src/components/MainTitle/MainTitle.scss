@@ -1,4 +1,6 @@
+@use "../../assets/sass/typography.scss" as *; 
+@use "../../assets/sass/base.scss" as *;
 .title {
-    grid-area: 2/2/2/6;
     font-weight: 600;
+    font-family: $head-font;
 }

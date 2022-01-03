@@ -8,7 +8,19 @@
 
 main {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(8, 1fr);
     height: 100vh;
+    @media only screen and (min-width: 606px) {
+        background-image: url(./assets/images/bgs-01.svg);
+    }
+    @media only screen and (min-width: 0px) and (max-width: 606px){
+        background-image: url(./assets/images/bgs-02.svg);
+    }
+    // @media only screen and (max-width: 376px) {
+    //     background-image: url(./assets/images/bgs-03.svg);
+    // }
+    background-size: cover;
+  
 }
+

@@ -1,11 +1,11 @@
 import "./Card.scss"
-const Card = ({liftType, weight, difficulty, date}) => {
+const Card = ({liftType, weight, difficulty, level, date}) => {
     return ( <>
             <div className = "card">
                 <h4>{liftType}</h4>
-                <p>{weight}kgs</p>
-                <p> Difficulty: {difficulty} %</p>
-                <p>On the {date}</p>
+                <p>Weight: {weight}kgs</p>
+                <p> Exertion: {level.charAt(0).toUpperCase() + level.slice(1)} ({difficulty})%</p>
+                <p>Completed: {date}</p>
             </div>
             </>
        

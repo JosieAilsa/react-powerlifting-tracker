@@ -14,7 +14,7 @@ const LevelSlider = ({handleDifficultyInput}) => {
 
     return (
     <div>
-        <Slider className = "input slider__input" bottomTitle="Very easy" topTitle="Very hard" difficulty ={difficulty} handleInput = {handleInput}/>
+        <Slider className = "input slider__input" bottomTitle="Very easy" topTitle="Very hard" difficulty ={difficulty} eventHandle = {handleInput}/>
     </div>
     );
 }

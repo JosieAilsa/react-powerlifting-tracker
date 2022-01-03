@@ -17,7 +17,7 @@ const getLiftRadio = liftsArr.map((lift, i) => {
 return ( 
     <div className="lift">
         <h4 className = "lift__title">Lift Type</h4>
-        <div>{getLiftRadio}</div>
+        <div className ="lift__list">{getLiftRadio}</div>
     </div>
      );
 }

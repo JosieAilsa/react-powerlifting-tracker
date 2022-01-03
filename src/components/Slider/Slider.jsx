@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import showDifficulty from "../../utils/string-helpers";
 import "./Slider.scss"
-const Slider = ({handleInput, className, bottomTitle, topTitle, diffculty}) => {
+const Slider = ({eventHandle,className, bottomTitle, topTitle, diffculty}) => {
  const [newLevel,setLevel] = useState("moderate");
 
     const handInputUpdateComponentState = (e) => {
         const currentDifficulty = e.target.value;
-        handleInput(currentDifficulty)
+        eventHandle(currentDifficulty)
         const getNewLevel = showDifficulty(currentDifficulty)
         setLevel(getNewLevel)
     }

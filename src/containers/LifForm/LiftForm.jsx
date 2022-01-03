@@ -1,8 +1,8 @@
-import MainTitle from "../MainTitle/MainTitle";
-import SelectLift from "../SelectLift/SelectLift";
-import WeightInput from "../WeightInput/WeightInput";
-import LevelSlider from '../LevelSlider/LevelSlider';
-import Button from "../Button/Button"
+import MainTitle from "../../components/MainTitle/MainTitle";
+import SelectLift from "../../components/SelectLift/SelectLift";
+import WeightInput from "../../components/WeightInput/WeightInput";
+import LevelSlider from '../../components/LevelSlider/LevelSlider';
+import Button from "../../components/Button/Button"
 import "./LiftForm.scss"
 
 const LiftForm = ({handleLiftSelect, handleWeightInput, handleDifficultyInput, handleClick}) => {
@@ -14,8 +14,8 @@ const liftsArr = ["Deadlift", "Squat", "Overhead press", "Bent-over row", "Bench
 
     return ( 
         <>
+         <form className = "form">
          <MainTitle title = "Record Lift" />
-        <form className = "form">
         <SelectLift liftsArr = {liftsArr} handleLiftSelect  = {handleLiftSelect}/>
         <WeightInput handleWeightInput = {handleWeightInput}/>
         <div class="difficulty">
