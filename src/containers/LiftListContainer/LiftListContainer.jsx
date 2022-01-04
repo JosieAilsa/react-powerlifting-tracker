@@ -4,6 +4,8 @@ import Card from "../../components/Card/Card"
 import FilterContainer from "../FilterContainer/FilterContainer";
 import showDifficulty from "../../utils/string-helpers";
 import { useEffect } from "react";
+import checkIsDefaultFilter from "../../utils/filter-helpers"
+import findWeightRange from "../../utils/filter-helpers";
 
 
 const LiftListContainer = ({allLiftsLogged}) => {
@@ -52,6 +54,20 @@ const LiftListContainer = ({allLiftsLogged}) => {
       })
       return newArr;
   }
+
+  const checkIsDefaultFilter = (curr, def) => {
+    // Check if the current filter is the default 
+   const isDefault = curr.every((item, index) =>{
+        const keyValues = Object.keys(item)
+        const isMatch = keyValues.every(key => item[key] === def[index][key])
+        if(isMatch) {
+            return true
+        }   
+        });
+    return isDefault;
+    } 
+
+
   //Handle lift fliter
   const handleSelectLift = (e) => {
       const weightSelect  = e.target.value;
@@ -125,24 +141,26 @@ const LiftListContainer = ({allLiftsLogged}) => {
   //Copy all the lifts currently shown 
   let newLiftsToShow; 
    if (currentLift) {
-     console.log("the lift is a ")
       newLiftsToShow = liftsToShow.filter(item => item.liftType === currentLift.liftType)
-      return newLiftsToShow
    }
    //Find if weight input
    let currentWeight = currentFilter.find(obj => obj.weight)
    if (currentWeight) {
-    newLiftsToShow = liftsToShow.filter(item => item.weight ===  currentWeight.weight )
-    return newLiftsToShow
+    newLiftsToShow = liftsToShow.filter(item => {
+        const weightRange = findWeightRange(item.weight)
+        if (weightRange === currentWeight.weight) {
+            return true;
+        }
+    }); 
+    console.log(newLiftsToShow)
    }
     //Find if difficulty input
     let currentDifficulty = currentFilter.find(obj => obj.level)
     if (currentDifficulty) {
      newLiftsToShow = liftsToShow.filter(item => item.level ===  currentDifficulty.level)
-     return newLiftsToShow
     }
     console.log(newLiftsToShow)
-    updateLiftsToShow(newLiftsToShow)
+    return updateLiftsToShow(newLiftsToShow)
   }, [currentFilter])
 
       
