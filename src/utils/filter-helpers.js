@@ -1,5 +1,5 @@
 
-const findWeightRange = (input) => {
+export const findWeightRange = (input) => {
   const toInteger= parseInt(input);
   if (toInteger> 180) {
     return ">180"
@@ -21,5 +21,4 @@ const findWeightRange = (input) => {
     return "0-20"
   }
 };
-
 export default findWeightRange;

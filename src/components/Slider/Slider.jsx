@@ -54,6 +54,7 @@ const Slider = ({eventHandle,className, bottomTitle, topTitle, diffculty}) => {
             <p class = "slider-label">{topTitle}</p>
     </div>
       <input className = {`slider ${className}`} value = {diffculty }type="range" min="1" max="100" onChange = {handInputUpdateComponentState}/>
+      <p>{newLevel}</p>
     </>);
 }
  

@@ -4,9 +4,10 @@ import Card from "../../components/Card/Card"
 import FilterContainer from "../FilterContainer/FilterContainer";
 import showDifficulty from "../../utils/string-helpers";
 import { useEffect } from "react";
-import checkIsDefaultFilter from "../../utils/filter-helpers"
+import checkIsDefaultFilter from "../../utils/filter-helper-default"
 import findWeightRange from "../../utils/filter-helpers";
-
+import checkIfLiftSelect from "../../utils/filter-helper-select"
+import changeAllFilters from "../../utils/filter-helper-change-all";
 
 const LiftListContainer = ({allLiftsLogged}) => {
     const filterDefault = [
@@ -34,41 +35,9 @@ const LiftListContainer = ({allLiftsLogged}) => {
 
 
 
- //Filter set up:  
 
- //Check if there is a lift selected so can filter by only that lift 
-  const  checkIfLiftSelect = () => {
-      const currentCheck = currentFilter.find(obj => obj.isChecked)
-      const indexValue = currentFilter.indexOf(currentCheck); 
-      if (indexValue > -1) {
-          return indexValue
-      } else {
-          return false;
-      }
-  }
-  //
-  const changeAllFilters = (array, key, value) => {
-      const newArr = array.map(item => {
-          item[key] = value 
-          return item;
-      })
-      return newArr;
-  }
-
-  const checkIsDefaultFilter = (curr, def) => {
-    // Check if the current filter is the default 
-   const isDefault = curr.every((item, index) =>{
-        const keyValues = Object.keys(item)
-        const isMatch = keyValues.every(key => item[key] === def[index][key])
-        if(isMatch) {
-            return true
-        }   
-        });
-    return isDefault;
-    } 
-
-
-  //Handle lift fliter
+// Handle filter selectfunction 
+  //Type of lift fliter
   const handleSelectLift = (e) => {
       const weightSelect  = e.target.value;
       if (weightSelect === "Select") {
@@ -82,7 +51,7 @@ const LiftListContainer = ({allLiftsLogged}) => {
       console.log(updateFilter);
       setFilter(updateFilter);
   }
-  //Handle weight select 
+  //Weight range filter
   const handleWeightSelect = (e) => {
       const weightInput = e.target.value; 
       if (weightInput === "Select") {
@@ -90,7 +59,7 @@ const LiftListContainer = ({allLiftsLogged}) => {
           setFilter(updateFilter)
           return console.log(currentFilter)
       }
-      const indexValue =  checkIfLiftSelect();
+      const indexValue =  checkIfLiftSelect(currentFilter,weightInput);
       if (indexValue) {
           const updateFilter = [...currentFilter];
           updateFilter[indexValue].weight = weightInput;
@@ -102,10 +71,13 @@ const LiftListContainer = ({allLiftsLogged}) => {
           return console.log(currentFilter)
       }
   }
-  
-  const handleDifficultyInput = (e) => {
+
+
+
+  //Difficulty slider
+  const handleDifficultySelect = (e) => {
       const difficultyInput = e;
-      const indexValue =  checkIfLiftSelect();
+      const indexValue =  checkIfLiftSelect(currentFilter,difficultyInput);
       if (indexValue) {
           const updateFilter = [...currentFilter];
           updateFilter[indexValue].difficulty = difficultyInput;
@@ -123,17 +95,11 @@ const LiftListContainer = ({allLiftsLogged}) => {
       }
   }
 
-  const filtersJSX = filterDefault.map((filterItem, i) => {
-      return <option id = {i} className = "lift-filter__option" value = {`${filterItem.liftType}`}>{filterItem.liftType}</option>
-  })
-  const weightRangeJSX = weightRange.map((weightRangeItem, i ) => {
-      return <option id = {i} className = "weight-filter__option" value = {`${weightRangeItem}`} >{weightRangeItem} KGs</option>
-  })
-
   useEffect(() => {
    const isDefault = checkIsDefaultFilter(currentFilter,filterDefault)
    //Guard to reset the filters if none selected 
    if (isDefault){
+       console.log(currentFilter)
        return  updateLiftsToShow(allLiftsLogged)
    }
    //Else determine what else to filter... 
@@ -154,27 +120,35 @@ const LiftListContainer = ({allLiftsLogged}) => {
     }); 
     console.log(newLiftsToShow)
    }
-    //Find if difficulty input
+    //Fid if difficulty input
     let currentDifficulty = currentFilter.find(obj => obj.level)
     if (currentDifficulty) {
-     newLiftsToShow = liftsToShow.filter(item => item.level ===  currentDifficulty.level)
+    //Filter from the original total lifts array to set back to new search each time 
+     newLiftsToShow = allLiftsLogged.filter(item => item.level === currentDifficulty.level)
+
     }
-    console.log(newLiftsToShow)
     return updateLiftsToShow(newLiftsToShow)
   }, [currentFilter])
 
-      
-  const allLiftsLoggedJSX =  liftsToShow.map(lift => {       
-    return (<>
+
+
+  //Functions to return JSX 
+    const allLiftsLoggedJSX =  liftsToShow.map(lift => {       
+        return (<>
        <Card liftType= {lift.liftType} weight = {lift.weight} difficulty = {lift.difficulty} date = {lift.date} level = {lift.level} />
        </>)
-   });
-
+    });
+    const filtersJSX = filterDefault.map((filterItem, i) => {
+        return <option id = {i} className = "lift-filter__option" value = {`${filterItem.liftType}`}>{filterItem.liftType}</option>
+    })
+    const weightRangeJSX = weightRange.map((weightRangeItem, i ) => {
+        return <option id = {i} className = "weight-filter__option" value = {`${weightRangeItem}`} >{weightRangeItem} KGs</option>
+    })
 
 
  return (
     <>
-    <FilterContainer handleDifficultyInput = {handleDifficultyInput} handleSelectLift ={handleSelectLift} handleWeightSelect ={handleWeightSelect} filtersJSX = {filtersJSX} weightRangeJSX = {weightRangeJSX} />
+    <FilterContainer handleDifficultySelect = {handleDifficultySelect} handleSelectLift ={handleSelectLift} handleWeightSelect ={handleWeightSelect} filtersJSX = {filtersJSX} weightRangeJSX = {weightRangeJSX} />
     <div className = "card-container">
     {allLiftsLoggedJSX}
     </div> 
