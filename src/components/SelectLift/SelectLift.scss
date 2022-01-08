@@ -1,3 +1,10 @@
 .lift {
     grid-area: 3/2/3/6;
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 10vh;
+    }
 }

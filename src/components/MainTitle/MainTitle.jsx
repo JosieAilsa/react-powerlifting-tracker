@@ -1,9 +1,9 @@
 
 import "./MainTitle.scss"
 
-const MainTitle = () => {
+const MainTitle = ({title}) => {
     return (
-        <h3 className = "title">Record lift</h3>
+        <h3 className = "title">{title}</h3>
     );
 }
 

@@ -1,0 +1,10 @@
+@use "../../assets/sass/typography.scss" as *; 
+@use "../../assets/sass/variables.scss" as *;
+
+.form {
+    background-color: $bg-white;
+    padding: 5vmin;
+    border-radius: 19px;
+    grid-area: 2/2/9/12;
+    margin: 5vmin;
+}

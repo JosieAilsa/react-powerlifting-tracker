@@ -1,7 +1,7 @@
 
 import './App.scss';
-import Nav from './components/Nav/Nav';
 import Home from "./components/Home/Home"
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
@@ -10,8 +10,9 @@ function App() {
     <header className="App-header">
     </header>
     <main>
-    <Nav/>
+    <Router>
     <Home className = "Home"/>
+    </Router>
     </main>
     </div>
     </>

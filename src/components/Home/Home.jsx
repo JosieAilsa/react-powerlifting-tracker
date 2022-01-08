@@ -1,39 +1,89 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import MainTitle from "../MainTitle/MainTitle";
-import startWeek from "../../data/data.js"
-import LiftForm from '../LifForm/LiftForm';
-import LevelSlider from '../LevelSlider/LevelSlider';
-import Button from '../Button/Button';
+import LiftForm from '../../containers/LifForm/LiftForm';
+import Nav from '../Nav/Nav' 
+import LiftListContainer from '../../containers/LiftListContainer/LiftListContainer';
+import { Routes, Route } from 'react-router-dom';
+import showDifficulty from "../../utils/string-helpers"
+
 
 const Home = () => {
-    const [weeklyData,setWeeklyRecord] = useState(startWeek);
+
+    const [newlevel, setLevel] = useState("moderate")
+    const [currentLift, setCurrentLift] = useState({});
+    const [allLiftsLogged, setAllLoggedLifts] = useState([]);
+    const [showLiftList, setLiftList] = useState(false);
+    const [showForm, setShowForm] = useState(true);
 
     const handleLiftSelect = (e) => {
+        console.log("event fires")
+        // console.log(e)
         const currentLift  = e.target.value;
-        console.log(currentLift)
-        const weeklyArrCopy = [...weeklyData]
-        const selectLift = weeklyArrCopy.map((lift) => {
-            if(lift.lift === currentLift) {
-            lift.hasCompleted = true; 
-            return lift
-            } 
-            return lift 
-            })  
-        setWeeklyRecord(selectLift)
+        const currentDate = new Date().toLocaleString().split(',')[0]
+        let newLift = {
+            liftType: currentLift,
+            weight: 0,
+            difficulty: 0,
+            date: currentDate,
+        }
+        setCurrentLift(newLift)
     }
 
-    // const handleWeightInput = () => {
-    //     const currentWeight = e.target.value; 
-    //     console.log(currentWeight)
-    // }
+    const handleWeightInput = (e) => {
+        const kgInput = e.target.value;
+        const updatedLift = {...currentLift}
+        parseFloat(updatedLift)
+        updatedLift.weight = kgInput
+        console.log(updatedLift)
+        setCurrentLift(updatedLift)
+    }
+
+    const handleDifficultyInput = (e) => {
+        const difficulty = e;
+        const updatedLift = {...currentLift}
+        updatedLift.difficulty = difficulty
+        updatedLift.level = showDifficulty(difficulty)
+        console.log(updatedLift)
+        setCurrentLift(updatedLift)
+
+    }
+
+    const handleClick = (e) => {     
+        const updatedLift = {...currentLift}
+        const updateLiftsLogged = [...allLiftsLogged]
+        updateLiftsLogged.push(updatedLift)
+        console.log(updateLiftsLogged)
+        setAllLoggedLifts(updateLiftsLogged)
+        console.log(e)
+      
+    }
+    
+    useEffect(() => {
+        console.log("Use effect ran")
+    },[allLiftsLogged]);
 
 
-    return ( 
+    const toggleLiftList = () => {
+        setLiftList(!showLiftList) 
+        setShowForm(!showForm)
+    }
+    const toggleShowForm = () => {
+        setShowForm(!showForm)
+        setLiftList(!showLiftList) 
+    }
+
+
+        return ( 
         <>
-        <MainTitle/>
-        <LiftForm weeklyData = {weeklyData} handleLiftSelect  = {handleLiftSelect}/>
-        <LevelSlider/>
-        <Button/>
+        <Nav toggleLiftList = {toggleLiftList} toggleShowForm = {toggleShowForm}/>
+            <Routes>
+            <Route path = "/addLift" 
+                element = {showForm && <LiftForm handleLiftSelect  = {handleLiftSelect} handleWeightInput = {handleWeightInput} handleDifficultyInput= {handleDifficultyInput} handleClick = {handleClick}/>}
+            />
+            <Route path = "/showLifts"
+                element =  {showLiftList && < LiftListContainer allLiftsLogged = {allLiftsLogged} />}
+            />
+        </Routes>
         </>
     );
 }

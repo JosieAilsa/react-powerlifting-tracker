@@ -1,20 +1,25 @@
 @use "../../assets/sass/typography.scss" as *; 
-@use "../../assets/sass/base.scss" as *;
+@use "../../assets/sass/variables.scss" as *;
 
 .nav{
- background-color: $color-black;
- grid-area: 1/7/1/1;
+ background-color: $bg-white;
+ grid-area: 1/1/1/13;
  display: flex;
  align-content: flex-end;
  justify-content: space-around;
  align-items: center;
+ -webkit-border-bottom-right-radius: 19px;
+-webkit-border-bottom-left-radius: 19px;
+-moz-border-radius-bottomright: 19px;
+-moz-border-radius-bottomleft: 19px;
+border-bottom-right-radius: 19px;
+border-bottom-left-radius: 19px;
 
  &__logo {
-     background-color: $color-red;
-     padding: 2.5vmin 2.5vmin;
      font-weight: 700;
      font-size: 1.5em;
      color: $color-background;
+     font-family: $head-font;
  }
 
  &__hamburger{
@@ -37,7 +42,9 @@
 .nav__link{
     font-weight: 600;
     font-size: 1.25em;
-    color: $color-background;
+    color: $color-black;
+    font-family: $head-font;
+
     }
  }
 

@@ -1,20 +1,21 @@
 
 import "./LevelSlider.scss"
+import { useState,useEffect } from "react";
+import Slider from "../Slider/Slider";
+import showDifficulty  from "../../utils/string-helpers";
 
-const LevelSlider = () => {
+const LevelSlider = ({handleDifficultyInput}) => {
+  const[difficulty,setDifficulty] = useState("")
+   
+    const handleInput = (e) => {
+        setDifficulty(e)
+        handleDifficultyInput(e)
+    }
+
     return (
-    <>
-    <div class="difficulty">
-    <h4 className = "difficulty__title">How did it feel?</h4>
-    <div className = "slider">
-        <div class = "slider__labels">
-            <p class = "slider__label">Easy</p>
-            <p class = "slider__label">Hard</p>
-        </div>
-        <input type="range" min="1" max="100" class="slider__input" id="myRange"/>
-        </div>
+    <div>
+        <Slider className = "input slider__input" bottomTitle="Very easy" topTitle="Very hard" difficulty ={difficulty} eventHandle = {handleInput}/>
     </div>
-    </>
     );
 }
  
