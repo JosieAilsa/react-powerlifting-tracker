@@ -1,4 +1,11 @@
-const showDifficulty = (difficulty) => {
+
+import squat from "../assets/images/icons/lifticon-03.svg";
+import overHeadPress from "../assets/images/icons/lifticon-01.svg"
+import benchPress from "../assets/images/icons/lifticon-04.svg";
+import bentOverRow from "../assets/images/icons/lifticon-02.svg";
+import deadlift from "../assets/images/icons/lifticon-05.svg";
+
+export const showDifficulty = (difficulty) => {
     const toInteger = parseInt(difficulty);
     if (isNaN(toInteger)){
         return undefined
@@ -14,4 +21,17 @@ const showDifficulty = (difficulty) => {
     }
      return "very easy"
     };
-export default showDifficulty;
+
+export const getImage = (liftType) => {
+    const lift = liftType.toLowerCase();
+    if (lift === "squat") {
+        return squat;
+    } else if (lift === "overhead press"){
+        return overHeadPress;
+    } else if (lift === "bench press" ) {
+        return benchPress
+    } else if (lift ==="bent-over row"){
+        return bentOverRow
+    } 
+    return deadlift
+}

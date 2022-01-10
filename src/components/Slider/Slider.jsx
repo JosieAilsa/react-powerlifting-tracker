@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import showDifficulty from "../../utils/string-helpers";
+import {showDifficulty} from "../../utils/string-helpers";
 import "./Slider.scss"
 const Slider = ({eventHandle,className, bottomTitle, topTitle, diffculty}) => {
  const [newLevel,setLevel] = useState("moderate");

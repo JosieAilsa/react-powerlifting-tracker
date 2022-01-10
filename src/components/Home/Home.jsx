@@ -4,7 +4,7 @@ import LiftForm from '../../containers/LifForm/LiftForm';
 import Nav from '../Nav/Nav' 
 import LiftListContainer from '../../containers/LiftListContainer/LiftListContainer';
 import { Routes, Route } from 'react-router-dom';
-import showDifficulty from "../../utils/string-helpers"
+import {showDifficulty} from "../../utils/string-helpers"
 
 
 const Home = () => {

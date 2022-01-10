@@ -1,4 +1,4 @@
-import showDifficulty from "./string-helpers";
+import {showDifficulty} from "./string-helpers";
 
 describe("Should return correct value", () => {
     it("Should return very hard when given `90`", () => {

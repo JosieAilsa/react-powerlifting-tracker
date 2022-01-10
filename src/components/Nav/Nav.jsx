@@ -1,12 +1,13 @@
 import "./Nav.scss";
 import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo-06.svg"
 
 const Nav = ({toggleLiftList, toggleShowForm}) => {
 
     return (
         <>
         <nav className = "nav">
-            <h3 className = "nav__logo">Lift5X5</h3>
+            <img className = "nav__logo" src={logo} alt="logo" />
             <svg className = "nav__hamburger"xmlns="http://www.w3.org/2000/svg" width="40.141" height="28.317" viewBox="0 0 40.141 28.317">
             <g id="Group_24" data-name="Group 24" transform="translate(-680.526 -46.699)">
                 <g id="Group_19" data-name="Group 19" transform="translate(681.526 47.699)">

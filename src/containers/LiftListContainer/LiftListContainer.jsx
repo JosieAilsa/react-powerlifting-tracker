@@ -2,12 +2,10 @@ import { useState } from "react/cjs/react.development";
 import "./LiftListContainer.scss"
 import Card from "../../components/Card/Card"
 import FilterContainer from "../FilterContainer/FilterContainer";
-import showDifficulty from "../../utils/string-helpers";
+import {showDifficulty, getImage} from "../../utils/string-helpers";
 import { useEffect } from "react";
-import checkIsDefaultFilter from "../../utils/filter-helper-default"
-import findWeightRange from "../../utils/filter-helpers";
-import checkIfLiftSelect from "../../utils/filter-helper-select"
-import changeAllFilters from "../../utils/filter-helper-change-all";
+import {checkIsDefaultFilter,findWeightRange, checkIfLiftSelect, changeAllFilters} from "../../utils/filter-helpers";
+
 
 const LiftListContainer = ({allLiftsLogged}) => {
     const filterDefault = [
@@ -32,9 +30,6 @@ const LiftListContainer = ({allLiftsLogged}) => {
 // Set state for lifts to show and filters
   const [liftsToShow, updateLiftsToShow] = useState(allLiftsLogged)
   const [currentFilter, setFilter] = useState(filterDefault);
-
-
-
 
 // Handle filter selectfunction 
   //Type of lift fliter
@@ -102,17 +97,16 @@ const LiftListContainer = ({allLiftsLogged}) => {
        console.log(currentFilter)
        return  updateLiftsToShow(allLiftsLogged)
    }
-   //Else determine what else to filter... 
-  let currentLift = currentFilter.find(obj => obj.isChecked)
   //Copy all the lifts currently shown 
-  let newLiftsToShow; 
+  let newLiftsToShow = [...allLiftsLogged];
+  let currentLift = currentFilter.find(obj => obj.isChecked)
    if (currentLift) {
-      newLiftsToShow = liftsToShow.filter(item => item.liftType === currentLift.liftType)
+      newLiftsToShow = allLiftsLogged.filter(item => item.liftType === currentLift.liftType)
    }
    //Find if weight input
    let currentWeight = currentFilter.find(obj => obj.weight)
    if (currentWeight) {
-    newLiftsToShow = liftsToShow.filter(item => {
+    newLiftsToShow = newLiftsToShow.filter(item => {
         const weightRange = findWeightRange(item.weight)
         if (weightRange === currentWeight.weight) {
             return true;
@@ -123,9 +117,11 @@ const LiftListContainer = ({allLiftsLogged}) => {
     //Fid if difficulty input
     let currentDifficulty = currentFilter.find(obj => obj.level)
     if (currentDifficulty) {
-    //Filter from the original total lifts array to set back to new search each time 
-     newLiftsToShow = allLiftsLogged.filter(item => item.level === currentDifficulty.level)
 
+        
+    //Filter from the original total lifts array to set back to new search each time 
+     newLiftsToShow = newLiftsToShow.filter(item => item.level === currentDifficulty.level)
+    
     }
     return updateLiftsToShow(newLiftsToShow)
   }, [currentFilter])
@@ -133,9 +129,10 @@ const LiftListContainer = ({allLiftsLogged}) => {
 
 
   //Functions to return JSX 
-    const allLiftsLoggedJSX =  liftsToShow.map(lift => {       
+    const allLiftsLoggedJSX =  liftsToShow.map(lift => {
+        const imageURL = getImage(lift.liftType)
         return (<>
-       <Card liftType= {lift.liftType} weight = {lift.weight} difficulty = {lift.difficulty} date = {lift.date} level = {lift.level} />
+       <Card liftType= {lift.liftType} weight = {lift.weight} difficulty = {lift.difficulty} date = {lift.date} level = {lift.level} img = {imageURL}/>
        </>)
     });
     const filtersJSX = filterDefault.map((filterItem, i) => {

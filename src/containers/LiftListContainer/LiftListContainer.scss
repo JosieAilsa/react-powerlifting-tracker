@@ -3,8 +3,6 @@
 
 .card-container{
     grid-area: 3/3/8/12;
-
-    .card{
-        background-color:$bg-white;
-    }
+    display: flex;
+    flex-wrap: wrap;
 }
