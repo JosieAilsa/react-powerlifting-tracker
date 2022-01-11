@@ -2,7 +2,7 @@
 @use "../../assets/sass/variables.scss" as *;
 
 .nav{
- background-color: $bg-white;
+ background-color:  $color-background;
  grid-area: 1/1/1/13;
  display: flex;
  align-content: flex-end;
@@ -14,9 +14,14 @@
 -moz-border-radius-bottomleft: 19px;
 border-bottom-right-radius: 19px;
 border-bottom-left-radius: 19px;
+height: 7.5vh;
+-webkit-box-shadow: 0 8px 6px -6px  rgba(34, 0, 0, 0.109);
+-moz-box-shadow: 0 8px 6px -6px rgba(34, 0, 0, 0.109);
+box-shadow: 0 8px 6px -6px rgba(34, 0, 0, 0.109);
+
 
  &__logo {
-    height:10vh;
+    height:80%;
  }
 
  &__hamburger{

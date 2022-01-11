@@ -2,9 +2,12 @@
 @use "../../assets/sass/variables.scss" as *;
 
 .form {
-    background-color: $bg-white;
+    background-color: $color-grey;
     padding: 5vmin;
     border-radius: 19px;
     grid-area: 2/2/9/12;
     margin: 5vmin;
+    box-shadow: 0 8px 6px -6px rgb(34 0 0 / 11%);
+    font-family: $body-font;
+
 }
