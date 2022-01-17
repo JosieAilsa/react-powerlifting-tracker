@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Nav from "../Nav/Nav";
-import Routing from "../Routes.jsx/Routing";
+import Routing from "../../containers/Routes.jsx/Routing";
 
 import { showDifficulty } from "../../utils/string-helpers";
 

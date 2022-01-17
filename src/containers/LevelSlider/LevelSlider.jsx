@@ -1,7 +1,6 @@
 import "./LevelSlider.scss";
-import { useState, useEffect } from "react";
-import Slider from "../Slider/Slider";
-import { showDifficulty } from "../../utils/string-helpers";
+import { useState} from "react";
+import Slider from "../../components/Slider/Slider"
 
 const LevelSlider = ({ handleDifficultyInput }) => {
   const [difficulty, setDifficulty] = useState("");

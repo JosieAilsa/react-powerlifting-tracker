@@ -1,10 +1,10 @@
 import SelectLift from "../../components/SelectLift/SelectLift";
 import WeightInput from "../../components/WeightInput/WeightInput";
-import LevelSlider from "../../components/LevelSlider/LevelSlider";
+import LevelSlider from "../../containers/LevelSlider/LevelSlider";
 import Button from "../../components/Button/Button";
-import "./LiftForm.scss";
+import "./AddLift.scss";
 
-const LiftForm = ({
+const AddLift = ({
   handleLiftSelect,
   handleWeightInput,
   handleDifficultyInput,
@@ -33,4 +33,4 @@ const LiftForm = ({
   );
 };
 
-export default LiftForm;
+export default AddLift;

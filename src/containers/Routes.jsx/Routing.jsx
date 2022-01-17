@@ -1,5 +1,5 @@
-import LiftForm from "../../containers/LifForm/LiftForm";
-import LiftListContainer from "../../containers/LiftListContainer/LiftListContainer";
+import AddLift from "../../pages/AddLift/AddLift";
+import LoggedLifts from "../../pages/LoggedLifts/LoggedLifts"
 import { Routes, Route } from "react-router-dom";
 
 const Routing = ({handleLiftSelect, handleWeightInput, handleDifficultyInput, handleClick, allLiftsLogged}) => {
@@ -8,7 +8,7 @@ const Routing = ({handleLiftSelect, handleWeightInput, handleDifficultyInput, ha
         <Route
           path="/lift/create"
           element={
-            <LiftForm
+            <AddLift
                 handleLiftSelect={handleLiftSelect}
                 handleWeightInput={handleWeightInput}
                 handleDifficultyInput={handleDifficultyInput}
@@ -18,7 +18,7 @@ const Routing = ({handleLiftSelect, handleWeightInput, handleDifficultyInput, ha
         />
         <Route
           path= "/lifts"
-          element={<LiftListContainer allLiftsLogged={allLiftsLogged} />}
+          element={<LoggedLifts allLiftsLogged={allLiftsLogged} />}
         />
       </Routes> 
     );

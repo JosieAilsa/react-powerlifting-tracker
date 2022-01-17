@@ -1,7 +1,7 @@
 import { useState } from "react/cjs/react.development";
-import "./LiftListContainer.scss";
+import "./LoggedLifts.scss";
 import Card from "../../components/Card/Card";
-import FilterContainer from "../FilterContainer/FilterContainer";
+import FilterContainer from "../../containers/FilterContainer/FilterContainer";
 import { showDifficulty, getImage } from "../../utils/string-helpers";
 import { useEffect } from "react";
 import {
@@ -11,7 +11,7 @@ import {
   changeAllFilters,
 } from "../../utils/filter-helpers";
 
-const LiftListContainer = ({ allLiftsLogged }) => {
+const LoggedLifts = ({ allLiftsLogged }) => {
   const filterDefault = [
     {
       liftType: "Deadlift",
@@ -217,4 +217,4 @@ const LiftListContainer = ({ allLiftsLogged }) => {
     </>
   );
 };
-export default LiftListContainer;
+export default LoggedLifts;

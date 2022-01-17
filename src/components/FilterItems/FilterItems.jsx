@@ -1,11 +1,10 @@
-import LevelSlider from "../LevelSlider/LevelSlider";
 import "./FilterItems.scss";
 const FilterItems = ({ selectItems, labelCopy, className, eventHandler }) => {
   return (
     <>
       <div className={`${{ className }} filter`}>
         <label htmlFor={`${className}__label filter__select`}>
-          {labelCopy}
+          {labelCopy}:
         </label>
         <select
           name={className}
