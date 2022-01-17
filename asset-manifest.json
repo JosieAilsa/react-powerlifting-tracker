@@ -1,23 +1,29 @@
 {
   "files": {
-    "main.css": "/react-powerlifting-tracker/static/css/main.af7a66a4.chunk.css",
-    "main.js": "/react-powerlifting-tracker/static/js/main.7989f41e.chunk.js",
-    "main.js.map": "/react-powerlifting-tracker/static/js/main.7989f41e.chunk.js.map",
-    "runtime-main.js": "/react-powerlifting-tracker/static/js/runtime-main.1cd77db7.js",
-    "runtime-main.js.map": "/react-powerlifting-tracker/static/js/runtime-main.1cd77db7.js.map",
-    "static/js/2.061fe6fb.chunk.js": "/react-powerlifting-tracker/static/js/2.061fe6fb.chunk.js",
-    "static/js/2.061fe6fb.chunk.js.map": "/react-powerlifting-tracker/static/js/2.061fe6fb.chunk.js.map",
-    "static/js/3.e7bf5fc7.chunk.js": "/react-powerlifting-tracker/static/js/3.e7bf5fc7.chunk.js",
-    "static/js/3.e7bf5fc7.chunk.js.map": "/react-powerlifting-tracker/static/js/3.e7bf5fc7.chunk.js.map",
+    "main.css": "/react-powerlifting-tracker/static/css/main.1d7206dd.chunk.css",
+    "main.js": "/react-powerlifting-tracker/static/js/main.f26db1dc.chunk.js",
+    "main.js.map": "/react-powerlifting-tracker/static/js/main.f26db1dc.chunk.js.map",
+    "runtime-main.js": "/react-powerlifting-tracker/static/js/runtime-main.2d875588.js",
+    "runtime-main.js.map": "/react-powerlifting-tracker/static/js/runtime-main.2d875588.js.map",
+    "static/js/2.7849e603.chunk.js": "/react-powerlifting-tracker/static/js/2.7849e603.chunk.js",
+    "static/js/2.7849e603.chunk.js.map": "/react-powerlifting-tracker/static/js/2.7849e603.chunk.js.map",
+    "static/js/3.9234933c.chunk.js": "/react-powerlifting-tracker/static/js/3.9234933c.chunk.js",
+    "static/js/3.9234933c.chunk.js.map": "/react-powerlifting-tracker/static/js/3.9234933c.chunk.js.map",
     "index.html": "/react-powerlifting-tracker/index.html",
-    "static/css/main.af7a66a4.chunk.css.map": "/react-powerlifting-tracker/static/css/main.af7a66a4.chunk.css.map",
-    "static/js/2.061fe6fb.chunk.js.LICENSE.txt": "/react-powerlifting-tracker/static/js/2.061fe6fb.chunk.js.LICENSE.txt",
-    "static/media/Slider.scss": "/react-powerlifting-tracker/static/media/veryHard.c18ad77f.png"
+    "static/css/main.1d7206dd.chunk.css.map": "/react-powerlifting-tracker/static/css/main.1d7206dd.chunk.css.map",
+    "static/js/2.7849e603.chunk.js.LICENSE.txt": "/react-powerlifting-tracker/static/js/2.7849e603.chunk.js.LICENSE.txt",
+    "static/media/Slider.scss": "/react-powerlifting-tracker/static/media/veryHard.c18ad77f.png",
+    "static/media/lifticon-01.dff8a8d3.svg": "/react-powerlifting-tracker/static/media/lifticon-01.dff8a8d3.svg",
+    "static/media/lifticon-02.dc3412cf.svg": "/react-powerlifting-tracker/static/media/lifticon-02.dc3412cf.svg",
+    "static/media/lifticon-03.348b1eaf.svg": "/react-powerlifting-tracker/static/media/lifticon-03.348b1eaf.svg",
+    "static/media/lifticon-04.5b2fe03a.svg": "/react-powerlifting-tracker/static/media/lifticon-04.5b2fe03a.svg",
+    "static/media/lifticon-05.837ea383.svg": "/react-powerlifting-tracker/static/media/lifticon-05.837ea383.svg",
+    "static/media/logo-06.9332d655.svg": "/react-powerlifting-tracker/static/media/logo-06.9332d655.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.1cd77db7.js",
-    "static/js/2.061fe6fb.chunk.js",
-    "static/css/main.af7a66a4.chunk.css",
-    "static/js/main.7989f41e.chunk.js"
+    "static/js/runtime-main.2d875588.js",
+    "static/js/2.7849e603.chunk.js",
+    "static/css/main.1d7206dd.chunk.css",
+    "static/js/main.f26db1dc.chunk.js"
   ]
 }
