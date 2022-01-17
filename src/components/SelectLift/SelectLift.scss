@@ -1,6 +1,9 @@
 .lift {
   grid-area: 3/2/3/6;
 
+  &__title {
+    padding: 1rem 0;
+  }
   &__list {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
@@ -13,9 +16,10 @@
   }
 }
 .radio{
-
+  padding: 0 1rem;
   &__label{
     width: 100%;
+    padding: 0 1rem;
   }
 }
 }

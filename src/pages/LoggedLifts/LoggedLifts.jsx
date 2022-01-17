@@ -9,61 +9,21 @@ import {
   findWeightRange,
   checkIfLiftSelect,
   changeAllFilters,
+  filterDefault,
+  weightRange
 } from "../../utils/filter-helpers";
+import useFetch from "../../utils/useFetch";
 
-const LoggedLifts = ({ allLiftsLogged }) => {
-  const filterDefault = [
-    {
-      liftType: "Deadlift",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-    {
-      liftType: "Squat",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-    {
-      liftType: "Overhead press",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-    {
-      liftType: "Bent-over row",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-    {
-      liftType: "Bench press",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-  ];
-  const weightRange = [
-    "0-20",
-    "21-40",
-    "41-60",
-    "61-80",
-    "81-100",
-    "101-120",
-    "121-140",
-    "161-180",
-    ">180",
-  ];
+
+const LoggedLifts = () => {
+const {allLifts, isPending, isError} = useFetch("http://localhost:8080/lifts")
 
   // Set state for lifts to show and filters
-  const [liftsToShow, updateLiftsToShow] = useState(allLiftsLogged);
+  const [liftsToShow, updateLiftsToShow] = useState(null);
   const [currentFilter, setFilter] = useState(filterDefault);
+  const [liftsJSX, setLiftsJSX] = useState(null)
+
+
 
   // Handle filter selectfunction
   //Type of lift fliter
@@ -133,13 +93,13 @@ const LoggedLifts = ({ allLiftsLogged }) => {
     //Guard to reset the filters if none selected
     if (isDefault) {
       console.log(currentFilter);
-      return updateLiftsToShow(allLiftsLogged);
+      return updateLiftsToShow(allLifts);
     }
     //Copy all the lifts currently shown
-    let newLiftsToShow = [...allLiftsLogged];
+    let newLiftsToShow = [...allLifts];
     let currentLift = currentFilter.find((obj) => obj.isChecked);
     if (currentLift) {
-      newLiftsToShow = allLiftsLogged.filter(
+      newLiftsToShow = allLifts.filter(
         (item) => item.liftType === currentLift.liftType
       );
     }
@@ -154,7 +114,7 @@ const LoggedLifts = ({ allLiftsLogged }) => {
       });
       console.log(newLiftsToShow);
     }
-    //Fid if difficulty input
+    //Find if difficulty input
     let currentDifficulty = currentFilter.find((obj) => obj.level);
     if (currentDifficulty) {
       //Filter from the original total lifts array to set back to new search each time
@@ -165,6 +125,7 @@ const LoggedLifts = ({ allLiftsLogged }) => {
     return updateLiftsToShow(newLiftsToShow);
   }, [currentFilter]);
 
+  useEffect(() => {
   //Functions to return JSX
   const allLiftsLoggedJSX = liftsToShow.map((lift) => {
     const imageURL = getImage(lift.liftType);
@@ -181,39 +142,24 @@ const LoggedLifts = ({ allLiftsLogged }) => {
       </>
     );
   });
-  const filtersJSX = filterDefault.map((filterItem, i) => {
-    return (
-      <option
-        id={i}
-        className="lift-filter__option"
-        value={`${filterItem.liftType}`}
-      >
-        {filterItem.liftType}
-      </option>
-    );
-  });
-  const weightRangeJSX = weightRange.map((weightRangeItem, i) => {
-    return (
-      <option
-        id={i}
-        className="weight-filter__option"
-        value={`${weightRangeItem}`}
-      >
-        {weightRangeItem} KGs
-      </option>
-    );
-  });
+  return setLiftsJSX(allLiftsLoggedJSX)
+  },[liftsToShow]);
+
 
   return (
     <>
-      <FilterContainer
-        handleDifficultySelect={handleDifficultySelect}
-        handleSelectLift={handleSelectLift}
-        handleWeightSelect={handleWeightSelect}
-        filtersJSX={filtersJSX}
-        weightRangeJSX={weightRangeJSX}
-      />
-      <div className="card-container">{allLiftsLoggedJSX}</div>
+     {isPending && <h3>Loading...</h3>}
+     {isError && <h3>Error</h3>}
+     {liftsJSX &&
+      <>
+        <FilterContainer
+          handleDifficultySelect={handleDifficultySelect}
+          handleSelectLift={handleSelectLift}
+          handleWeightSelect={handleWeightSelect}
+        />
+        <div className="card-container">{liftsJSX}</div>
+      </>
+     }
     </>
   );
 };

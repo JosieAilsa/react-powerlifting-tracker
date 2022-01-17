@@ -54,3 +54,77 @@ export const changeAllFilters = (array, key, value) => {
   });
   return newArr;
 };
+
+
+export const filterDefault = [
+  {
+    liftType: "Deadlift",
+    isChecked: false,
+    weight: "",
+    difficulty: "",
+    level: "",
+  },
+  {
+    liftType: "Squat",
+    isChecked: false,
+    weight: "",
+    difficulty: "",
+    level: "",
+  },
+  {
+    liftType: "Overhead press",
+    isChecked: false,
+    weight: "",
+    difficulty: "",
+    level: "",
+  },
+  {
+    liftType: "Bent-over row",
+    isChecked: false,
+    weight: "",
+    difficulty: "",
+    level: "",
+  },
+  {
+    liftType: "Bench press",
+    isChecked: false,
+    weight: "",
+    difficulty: "",
+    level: "",
+  },
+];
+export const weightRange = [
+  "0-20",
+  "21-40",
+  "41-60",
+  "61-80",
+  "81-100",
+  "101-120",
+  "121-140",
+  "161-180",
+  ">180",
+];
+
+export const filtersJSX = filterDefault.map((filterItem, i) => {
+  return (
+    <option
+      id={i}
+      className="lift-filter__option"
+      value={`${filterItem.liftType}`}
+    >
+      {filterItem.liftType}
+    </option>
+  );
+});
+
+export const weightRangeJSX = weightRange.map((weightRangeItem, i) => {
+  return (
+    <option
+      id={i}
+      className="weight-filter__option"
+      value={`${weightRangeItem}`}
+    >
+      {weightRangeItem} KGs
+    </option>
+  );
+});

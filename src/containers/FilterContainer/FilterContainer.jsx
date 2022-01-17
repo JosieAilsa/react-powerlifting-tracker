@@ -2,13 +2,12 @@ import { useState } from "react";
 import FilterItems from "../../components/FilterItems/FilterItems";
 import Slider from "../../components/Slider/Slider";
 import "./FilterContainer.scss";
+import {filtersJSX, weightRangeJSX} from "../../utils/filter-helpers"
 
 const FilterContainer = ({
   handleDifficultySelect,
   handleSelectLift,
-  handleWeightSelect,
-  filtersJSX,
-  weightRangeJSX,
+  handleWeightSelect
 }) => {
   return (
     <>
