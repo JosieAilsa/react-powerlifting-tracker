@@ -1,135 +1,133 @@
-.slider-labels{
-    display: flex;
-    justify-content: space-between;
+
+@use "../../assets/sass/typography" as *; 
+@use "../../assets/sass/variables" as *; 
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
 }
 .slider {
-    width: 100%;
-    -webkit-appearance: none;
-    width: 100%;
-    border-radius: 5px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+  width: 100%;
+  -webkit-appearance: none;
+  height: 3vh;
+  border-radius: 5px;
+  background: $color-darker-grey;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
-.slider:hover{
-    opacity: 1;
+.slider:hover {
+  opacity: 1;
 }
-///Slider emoji change 
+///Slider emoji change
 
 //MODERATE
 .slider--moderate::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    border: 0;
-    border-radius: 50%;
-    background-image: url('../../assets/images/moderate.png');
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50%;
+  background-image: url("../../assets/images/moderate.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
 
-  .slider--moderate::-moz-range-thumb {
-    width: 23px;
-    height: 25px;
-    border: 0;
-    background: url('../../assets/images/moderate.png');
-    cursor: pointer;
-  }
-  
-/// EASY 
-  .slider--easy::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    border: 0;
-    border-radius: 50%;
-    background-image: url('../../assets/images/easy.png');
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
+.slider--moderate::-moz-range-thumb {
+  width: 23px;
+  height: 25px;
+  border: 0;
+  background: url("../../assets/images/moderate.png");
+  cursor: pointer;
+}
 
-  .slider--easy::-moz-range-thumb {
-    width: 23px;
-    height: 25px;
-    border: 0;
-    background: url('../../assets/images/easy.png');
-    cursor: pointer;
-  }
+/// EASY
+.slider--easy::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50%;
+  background-image: url("../../assets/images/easy.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
 
-  //VERY EASY
-  .slider--very-easy::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    border: 0;
-    border-radius: 50%;
-    background-image: url('../../assets/images/veryEasy.png');
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
-  .slider--very-easy::-moz-range-thumb {
-    width: 23px;
-    height: 25px;
-    border: 0;
-    background: url('../../assets/images/veryEasy.png');
-    cursor: pointer;
-  }
+.slider--easy::-moz-range-thumb {
+  width: 23px;
+  height: 25px;
+  border: 0;
+  background: url("../../assets/images/easy.png");
+  cursor: pointer;
+}
+
+//VERY EASY
+.slider--very-easy::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50%;
+  background-image: url("../../assets/images/veryEasy.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.slider--very-easy::-moz-range-thumb {
+  width: 23px;
+  height: 25px;
+  border: 0;
+  background: url("../../assets/images/veryEasy.png");
+  cursor: pointer;
+}
 //Hard
 .slider--hard::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   border: 0;
   border-radius: 50%;
-  background-image: url('../../assets/images/hard.png');
+  background-image: url("../../assets/images/hard.png");
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
 }
 .slider--hard::-moz-range-thumb {
   width: 23px;
   height: 25px;
   border: 0;
-  background: url('../../assets/images/hard.png');
+  background: url("../../assets/images/hard.png");
   cursor: pointer;
 }
 
 //VERY Hard
-    .slider--very-hard::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        border: 0;
-        border-radius: 50%;
-        background-image: url('../../assets/images/veryHard.png');
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-      }
-      .slider--very-hard::-moz-range-thumb {
-        width: 23px;
-        height: 25px;
-        border: 0;
-        background: url('../../assets/images/veryHard.png');
-        cursor: pointer;
-      }
-      
-      
-  
-  
-
+.slider--very-hard::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50%;
+  background-image: url("../../assets/images/veryHard.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.slider--very-hard::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: url("../../assets/images/veryHard.png");
+  cursor: pointer;
+}

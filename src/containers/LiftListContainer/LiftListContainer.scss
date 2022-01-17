@@ -1,8 +1,8 @@
-@use "../../assets/sass/typography.scss" as *; 
-@use "../../assets/sass/variables.scss" as *; 
+@use "../../assets/sass/typography.scss" as *;
+@use "../../assets/sass/variables.scss" as *;
 
-.card-container{
-    grid-area: 3/3/8/12;
-    display: flex;
-    flex-wrap: wrap;
+.card-container {
+  grid-area: 3/3/8/12;
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -1,26 +1,25 @@
-@use "../../assets/sass/variables.scss" as *; 
+@use "../../assets/sass/variables.scss" as *;
 @use "../../assets/sass/typography.scss" as *;
 
 .weightcontainer {
+  .weight__input {
+    display: flex;
+    align-items: center;
+    height: 50%;
+    .input {
+      width: 75%;
+      height: 50%;
+    }
 
-    .weight__input {
-        display: flex;
-        align-items: center;
-        height: 50%;
-        .input{
-            width: 75%;
-            height: 50%;
-        }
-    
-    .input__kgs{
-        background-color: $color-black;
-        height:50%;
-        color: $color-background;
-        padding: 1px 2px;
-        flex:1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .input__kgs {
+      background-color: $color-darker-grey;
+      height: 50%;
+      color: $color-background;
+      padding: 1px 2px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    }
+  }
 }

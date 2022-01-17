@@ -1,11 +1,12 @@
-import "./Button.scss"
+import "./Button.scss";
 
-const Button = ({title, handleClick}) => {
-    return (
+const Button = ({ title, handleClick }) => {
+  return (
     <>
-    {/* <button className="btn" onClick ={handleClick}>{text}</button> */}
-    <input type="reset" className="btn" value = {title}onClick= {handleClick}/>
-    </> );
-}
- 
+      {/* <button className="btn" onClick ={handleClick}>{text}</button> */}
+      <input type="reset" className="btn" value={title} onClick={handleClick} />
+    </>
+  );
+};
+
 export default Button;

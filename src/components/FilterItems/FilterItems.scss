@@ -1,4 +1,12 @@
-.liftselect{
-    width: 50%; 
-    height: 50%;
+.liftselect {
+  width: 50%;
+  height: 50%;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  &__label {
+    padding-bottom: 1vmin;
+  }
 }

@@ -1,47 +1,46 @@
-@use "../../assets/sass/typography.scss" as *; 
-@use "../../assets/sass/variables.scss" as *; 
+@use "../../assets/sass/typography.scss" as *;
+@use "../../assets/sass/variables.scss" as *;
 
-.card{
-    display: flex;
-    flex-direction: column;
-    background-color: #F9F6FD;
-    padding: 2.5vmin;
-    margin: 0.5vmin;
-    border-radius: 1rem;
-    height: 45vh;
-    align-content: flex-end;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 8px 6px -6px rgba(34, 0, 0, 0.109);
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f6fd;
+  padding: 2.5vmin;
+  margin: 0.5vmin;
+  border-radius: 1rem;
+  height: 45vh;
+  align-content: flex-end;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 6px -6px rgba(34, 0, 0, 0.109);
 
+  @media only screen and (min-width: 641px) {
+    width: 20vw;
+    height: 25vh;
+  }
 
-    @media only screen and (min-width: 641px) {
-        width: 20vw; 
-        height: 25vh;
-    }
+  @media only screen and (max-width: 640px) {
+    width: 80vw;
+    height: 25vh;
+  }
 
-    @media only screen and (max-width: 640px) {
-        width: 80vw; 
-        height: 25vh;
-    }
-
-&__text{
+  &__text {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     flex-grow: 1;
     width: 100%;
-}
+  }
 
-&__title{
+  &__title {
     width: 100%;
     font-size: 1rem;
     font-family: $head-font;
     font-weight: $head-font-weight;
-}
- 
-&__info{
+  }
+
+  &__info {
     width: 100%;
     font-size: 0.75rem;
     padding: 0px;
@@ -49,12 +48,9 @@
     display: flex;
     align-items: center;
     font-family: $body-font;
-
-}
-&__image{
+  }
+  &__image {
     width: 30%;
     height: 30%;
-}
-
-
+  }
 }
