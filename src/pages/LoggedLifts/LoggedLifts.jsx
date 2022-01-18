@@ -18,14 +18,11 @@ import useFetch from "../../utils/useFetch";
 const LoggedLifts = () => {
 const {allLifts, isPending, isError} = useFetch("http://localhost:8080/lifts")
 
+
   // Set state for lifts to show and filters
-  const [liftsToShow, updateLiftsToShow] = useState(null);
-  const [currentFilter, setFilter] = useState(filterDefault);
-  const [liftsJSX, setLiftsJSX] = useState(null)
-
-
-
-  // Handle filter selectfunction
+  const [liftsToShow, updateLiftsToShow] = useState([]);
+  const [currentFilter, setFilter] = useState(filterDefault);  
+  const [liftsJSX, setLiftsJSX] = useState(<></>)
   //Type of lift fliter
   const handleSelectLift = (e) => {
     const weightSelect = e.target.value;
@@ -66,7 +63,6 @@ const {allLifts, isPending, isError} = useFetch("http://localhost:8080/lifts")
       return console.log(currentFilter);
     }
   };
-
   //Difficulty slider
   const handleDifficultySelect = (e) => {
     const difficultyInput = e;
@@ -88,69 +84,82 @@ const {allLifts, isPending, isError} = useFetch("http://localhost:8080/lifts")
     }
   };
 
-  useEffect(() => {
-    const isDefault = checkIsDefaultFilter(currentFilter, filterDefault);
-    //Guard to reset the filters if none selected
-    if (isDefault) {
-      console.log(currentFilter);
-      return updateLiftsToShow(allLifts);
-    }
-    //Copy all the lifts currently shown
-    let newLiftsToShow = [...allLifts];
-    let currentLift = currentFilter.find((obj) => obj.isChecked);
-    if (currentLift) {
-      newLiftsToShow = allLifts.filter(
-        (item) => item.liftType === currentLift.liftType
-      );
-    }
-    //Find if weight input
-    let currentWeight = currentFilter.find((obj) => obj.weight);
-    if (currentWeight) {
-      newLiftsToShow = newLiftsToShow.filter((item) => {
-        const weightRange = findWeightRange(item.weight);
-        if (weightRange === currentWeight.weight) {
-          return true;
-        }
-      });
-      console.log(newLiftsToShow);
-    }
-    //Find if difficulty input
-    let currentDifficulty = currentFilter.find((obj) => obj.level);
-    if (currentDifficulty) {
-      //Filter from the original total lifts array to set back to new search each time
-      newLiftsToShow = newLiftsToShow.filter(
-        (item) => item.level === currentDifficulty.level
-      );
-    }
-    return updateLiftsToShow(newLiftsToShow);
-  }, [currentFilter]);
+
+  // useEffect(() => {
+  //   const isDefault = checkIsDefaultFilter(currentFilter, filterDefault);
+  //   //Guard to reset the filters if none selected
+  //   if (isDefault) {
+  //     console.log(currentFilter);
+  //     return updateLiftsToShow(allLifts);
+  //   }
+  //   //Copy all the lifts currently shown
+  //   let newLiftsToShow = [...allLifts];
+  //   let currentLift = currentFilter.find((obj) => obj.isChecked);
+  //   if (currentLift) {
+  //     newLiftsToShow = allLifts.filter(
+  //       (item) => item.liftType === currentLift.liftType
+  //     );
+  //   }
+  //   //Find if weight input
+  //   let currentWeight = currentFilter.find((obj) => obj.weight);
+  //   if (currentWeight) {
+  //     newLiftsToShow = newLiftsToShow.filter((item) => {
+  //       const weightRange = findWeightRange(item.weight);
+  //       if (weightRange === currentWeight.weight) {
+  //         return true;
+  //       }
+  //     });
+  //     console.log(newLiftsToShow);
+  //   }
+  //   //Find if difficulty input
+  //   let currentDifficulty = currentFilter.find((obj) => obj.level);
+  //   if (currentDifficulty) {
+  //     //Filter from the original total lifts array to set back to new search each time
+  //     newLiftsToShow = newLiftsToShow.filter(
+  //       (item) => item.level === currentDifficulty.level
+  //     );
+  //   }
+  //   return updateLiftsToShow(newLiftsToShow);
+  // }, [currentFilter]);
+
+
 
   useEffect(() => {
   //Functions to return JSX
-  const allLiftsLoggedJSX = liftsToShow.map((lift) => {
-    const imageURL = getImage(lift.liftType);
-    return (
+  console.log(liftsToShow)
+  console.log(allLifts)
+  updateLiftsToShow(allLifts)
+  if (liftsToShow === []) {
+    setLiftsJSX(
       <>
-        <Card
-          liftType={lift.liftType}
-          weight={lift.weight}
-          difficulty={lift.difficulty}
-          date={lift.date}
-          level={lift.level}
-          img={imageURL}
-        />
       </>
-    );
-  });
-  return setLiftsJSX(allLiftsLoggedJSX)
-  },[liftsToShow]);
+    )
+  } 
+  const cardLiftsJSX = liftsToShow.map((lift) => {
+    const imageURL = getImage(lift.liftType);
+      return (
+        <>
+          <Card
+            liftType={lift.liftType}
+            weight={lift.weight}
+            difficulty={lift.difficulty}
+            date={lift.date}
+            level={lift.level}
+            img={imageURL}
+          />
+        </>
+      );
+    });
+    console.log(cardLiftsJSX)
+    setLiftsJSX(cardLiftsJSX)
+  },[isPending]);
 
 
   return (
     <>
      {isPending && <h3>Loading...</h3>}
      {isError && <h3>Error</h3>}
-     {liftsJSX &&
+     {liftsToShow &&
       <>
         <FilterContainer
           handleDifficultySelect={handleDifficultySelect}
@@ -158,6 +167,7 @@ const {allLifts, isPending, isError} = useFetch("http://localhost:8080/lifts")
           handleWeightSelect={handleWeightSelect}
         />
         <div className="card-container">{liftsJSX}</div>
+     
       </>
      }
     </>
