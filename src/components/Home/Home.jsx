@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import Nav from "../Nav/Nav";
 import Routing from "../../containers/Routes.jsx/Routing";
+import useFetch from "../../utils/useFetch";
 
 import { showDifficulty } from "../../utils/string-helpers";
 
 const Home = () => {
   const [currentLift, setCurrentLift] = useState({});
-  const [allLiftsLogged, setAllLoggedLifts] = useState([]);
-  const [isDeleteSuccess, setIsDeleteSuccess]= useState(false)
-
+  const [shouldFetch, setShouldFetch] = useState(false)
+ 
   const handleLiftSelect = (e) => {
-    // console.log(e)
     const currentLift = e.target.value;
     const currentDate = new Date().toLocaleString().split(",")[0];
     let newLift = {
@@ -20,7 +19,6 @@ const Home = () => {
       date: currentDate,
     };
     setCurrentLift(newLift);
-    console.log(currentLift)
   };
 
   const handleWeightInput = (e) => {
@@ -29,7 +27,6 @@ const Home = () => {
     parseFloat(updatedLift);
     updatedLift.weight = kgInput;
     setCurrentLift(updatedLift);
-    console.log(currentLift)
   };
 
   const handleDifficultyInput = (e) => {
@@ -38,7 +35,6 @@ const Home = () => {
     updatedLift.difficulty = difficulty;
     updatedLift.level = showDifficulty(difficulty);
     setCurrentLift(updatedLift);
-    console.log(currentLift)
   };
 
   const handleSubmit = () => {
@@ -60,11 +56,6 @@ const Home = () => {
     .catch(err => console.log(err));
 };
 
-  useEffect(() => {
-    console.log(allLiftsLogged);
-  }, [allLiftsLogged]);
-
-  ///Move routes to own component
   return (
     <>
       <Nav />
@@ -73,7 +64,7 @@ const Home = () => {
         handleWeightInput={handleWeightInput}
         handleDifficultyInput={handleDifficultyInput}
         handleSubmit={handleSubmit}
-        allLiftsLogged = {allLiftsLogged}/>
+      />
     </>
   );
 };

@@ -2,16 +2,16 @@
 @use "../../assets/sass/variables.scss" as *;
 
 .form {
-  background-color: $color-grey;
+  background-color: #f9f6fd;
   padding: 5vmin;
   border-radius: 19px;
   grid-area: 2/2/9/12;
+  height: 80%;
   margin: 5vmin;
   box-shadow: 0 8px 6px -6px rgb(34 0 0 / 11%);
-  font-family: $body-font;
+  font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   justify-content: space-around;
 
   @media only screen and (min-width: 1092px) {
@@ -21,6 +21,7 @@
   .title {
     font-weight: 600;
     font-family: $head-font;
+    font-size: $header-size;
   }
   .weight__input{
     height:10vh;
