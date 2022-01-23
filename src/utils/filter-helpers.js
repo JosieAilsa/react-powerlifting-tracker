@@ -1,3 +1,4 @@
+
 export const findWeightRange = (input) => {
   const toInteger = parseInt(input);
   if (toInteger > 180) {
@@ -21,11 +22,13 @@ export const findWeightRange = (input) => {
   }
 };
 
-export const checkIfLiftSelect = (arr, item) => {
+export const hasArrayItem = (arr, item) => {
   const currentCheck = arr.find((element) => element.item);
   const indexValue = arr.indexOf(currentCheck);
+
+  // return indexValue > -1;
   if (indexValue > -1) {
-    return indexValue;
+    return true;
   } else {
     return false;
   }

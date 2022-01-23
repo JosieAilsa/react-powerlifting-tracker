@@ -7,6 +7,7 @@ import { showDifficulty } from "../../utils/string-helpers";
 const Home = () => {
   const [currentLift, setCurrentLift] = useState({});
   const [allLiftsLogged, setAllLoggedLifts] = useState([]);
+  const [isDeleteSuccess, setIsDeleteSuccess]= useState(false)
 
   const handleLiftSelect = (e) => {
     // console.log(e)
@@ -19,6 +20,7 @@ const Home = () => {
       date: currentDate,
     };
     setCurrentLift(newLift);
+    console.log(currentLift)
   };
 
   const handleWeightInput = (e) => {
@@ -27,6 +29,7 @@ const Home = () => {
     parseFloat(updatedLift);
     updatedLift.weight = kgInput;
     setCurrentLift(updatedLift);
+    console.log(currentLift)
   };
 
   const handleDifficultyInput = (e) => {
@@ -35,14 +38,27 @@ const Home = () => {
     updatedLift.difficulty = difficulty;
     updatedLift.level = showDifficulty(difficulty);
     setCurrentLift(updatedLift);
+    console.log(currentLift)
   };
 
-  const handleClick = (e) => {
+  const handleSubmit = () => {
     const updatedLift = { ...currentLift };
-    const updateLiftsLogged = [...allLiftsLogged];
-    updateLiftsLogged.push(updatedLift);
-    setAllLoggedLifts(updateLiftsLogged);
-  };
+    setCurrentLift(updatedLift)
+    console.log(currentLift)
+    fetch("http://localhost:8080/lifts/create", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(currentLift)
+    })
+    .then((res) => {
+      if(!res.ok)throw Error ("Could not fetch")
+      return res.json()
+    })
+    .then((json => console.log(json)))
+    .catch(err => console.log(err));
+};
 
   useEffect(() => {
     console.log(allLiftsLogged);
@@ -56,7 +72,7 @@ const Home = () => {
         handleLiftSelect={handleLiftSelect}
         handleWeightInput={handleWeightInput}
         handleDifficultyInput={handleDifficultyInput}
-        handleClick={handleClick}
+        handleSubmit={handleSubmit}
         allLiftsLogged = {allLiftsLogged}/>
     </>
   );

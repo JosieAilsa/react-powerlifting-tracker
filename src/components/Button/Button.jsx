@@ -1,9 +1,9 @@
 import "./Button.scss";
 
-const Button = ({ title, handleClick }) => {
+const Button = ({ title, handleSubmit }) => {
   return (
     <>
-      <input type="reset" className="btn" value={title} onClick={handleClick} />
+      <input type="reset" className="btn" value={title} onClick={handleSubmit} />
     </>
   );
 };

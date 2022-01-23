@@ -12,7 +12,7 @@ const FilterItems = ({ selectItems, labelCopy, className, eventHandler }) => {
           id="lift"
           onChange={eventHandler}
         >
-          <option selected value="Select">
+          <option selected value="Reset">
             Select
           </option>
           {selectItems}

@@ -3,12 +3,13 @@ import WeightInput from "../../components/WeightInput/WeightInput";
 import LevelSlider from "../../containers/LevelSlider/LevelSlider";
 import Button from "../../components/Button/Button";
 import "./AddLift.scss";
+import { useState } from "react";
 
 const AddLift = ({
   handleLiftSelect,
   handleWeightInput,
   handleDifficultyInput,
-  handleClick,
+  handleSubmit,
 }) => {
   const liftsArr = [
     "Deadlift",
@@ -17,8 +18,13 @@ const AddLift = ({
     "Bent-over row",
     "Bench press",
   ];
+  const [buttonTitle, setButtonTitle] = useState("Add lift")
 
-  //Get rid of main title
+  const handleButtonClick = () => {
+    console.log("fired")
+    setButtonTitle("Added!")
+  }
+
   return (
     <form className="form">
       <h3 className="title">Record Lift</h3>
@@ -28,7 +34,7 @@ const AddLift = ({
         <h4 className="difficulty__title">How did it feel?</h4>
         <LevelSlider handleDifficultyInput={handleDifficultyInput} />
       </div>
-      <Button type="reset" handleClick={handleClick} title={"Add next lift"} />
+      <Button type="submit" title={buttonTitle} handleSubmit = {handleSubmit}/>
     </form>
   );
 };
