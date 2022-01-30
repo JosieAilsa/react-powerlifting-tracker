@@ -1,6 +1,6 @@
 import "./Nav.scss";
-import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo-06.svg";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -30,8 +30,8 @@ const Nav = () => {
               transform="translate(0)"
               fill="none"
               stroke="#fff"
-              stroke-linecap="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeWidth="2"
             />
             <line
               id="Line_2"
@@ -40,8 +40,8 @@ const Nav = () => {
               transform="translate(0 13.385)"
               fill="none"
               stroke="#fff"
-              stroke-linecap="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeWidth="2"
             />
             <line
               id="Line_3"
@@ -50,8 +50,8 @@ const Nav = () => {
               transform="translate(0 26.317)"
               fill="none"
               stroke="#fff"
-              stroke-linecap="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeWidth="2"
             />
           </g>
         </g>

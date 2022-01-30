@@ -55,6 +55,7 @@ const Slider = ({
 
   return (
     <>
+    <p className = "slider-description">It felt: {newLevel}</p>
       <div class="slider-labels">
         <p class="slider-label">{bottomTitle}</p>
         <p class="slider-label">{topTitle}</p>
@@ -67,7 +68,6 @@ const Slider = ({
         max="100"
         onChange={handInputUpdateComponentState}
       />
-      <p>{newLevel}</p>
     </>
   );
 };

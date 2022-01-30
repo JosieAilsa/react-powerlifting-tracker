@@ -20,4 +20,25 @@
     background-color: $color-purple;
     color: $color-background;
   }
+
+  &:active {
+  animation: bounce 0.5s linear;
+  }
+
+  @keyframes bounce {
+  0%, 50%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-1vh);
+  }
+  75% {
+    transform: translateY(-1.5vh);
+  }
+  85% {
+    transform: translateY(+0.5vh);
+  }
+
+
+}
 }

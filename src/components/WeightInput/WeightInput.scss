@@ -2,6 +2,8 @@
 @use "../../assets/sass/typography.scss" as *;
 
 .weightcontainer {
+  flex-basis: 20%;
+  flex-grow: 1;
   .weight__input {
     display: flex;
     align-items: center;

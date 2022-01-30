@@ -1,8 +1,8 @@
 .lift {
-  grid-area: 3/2/3/6;
-
+  flex-basis: 30%;
+  flex-grow: 1;
   &__title {
-    padding: 1rem 0;
+    padding-bottom: 1rem ;
   }
   &__list {
     display: grid;

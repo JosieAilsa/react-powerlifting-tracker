@@ -41,7 +41,7 @@ const Home = () => {
     const updatedLift = { ...currentLift };
     setCurrentLift(updatedLift)
     console.log(currentLift)
-    fetch("http://localhost:8080/lifts/create", {
+    fetch("https://instant-run-338811.nw.r.appspot.com/lifts/create", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -15,15 +15,16 @@ const useFetch = (url) => {
                     if(!res.ok) {
                         throw Error ("Could not fetch")
                     }
+                    console.log(res)
                     return res.json()
                 })
                     .then((data) => {
-                        console.log(data)
                         setAllLifts(data)
                         setIsError(null)
                         setIsPending(false)
                     })
                     .catch(err => {
+                        console.log(err.message)
                         setIsPending(false)
                         setIsError(err.message)
                     })

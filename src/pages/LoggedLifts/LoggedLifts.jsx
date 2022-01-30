@@ -19,8 +19,8 @@ const LoggedLifts = () => {
   // Set state for lifts to show and filters
   const [liftsToShow, setLiftsToShow] = useState([]);
   const [currentFilter, setFilter] = useState(filterDefault);  
-  const  [deleteId, setDeleteId] = useState(null)
-  const {allLifts, isPending, isError} = useFetch("http://localhost:8080/lifts")
+  const  [deleteId, setDeleteId] = useState()
+  const {allLifts, isPending, isError} = useFetch("https://instant-run-338811.nw.r.appspot.com/lifts/all")
 
   //Type of lift fliter
   const handleSelectLift = (e) => {
@@ -90,20 +90,31 @@ const LoggedLifts = () => {
     }
   };
 
+
+  useEffect(() => {
+    if(!isPending) {
+      return 
+    }
+    setLiftsToShow([...allLifts])
+  }, [allLifts]);
+  
   //Deletes an entry one the delet button is pressed 
   useEffect(() => {
-  if(!deleteId) {
+    console.log(deleteId)
+  if(isPending) {
     return 
   }
-  fetch(`http://localhost:8080/lifts/${deleteId}`, {
-    method: 'DELETE',
+  fetch(`https://instant-run-338811.nw.r.appspot.com/lifts/${deleteId}`, { 
+  method: 'DELETE',
     })
     .then((res) => {
       if(!res.ok) throw Error ("Could not fetch")
       return res.json()
     })
     .catch(err => console.log(err));
-    window.location.reload()
+
+    // window.location.reload;
+    
 },
  [deleteId])
 
@@ -146,8 +157,7 @@ const LoggedLifts = () => {
   //   return setLiftsToShow(newLiftsToShow);
   // }, [currentFilter]);
 
-  const getJSX = (data) => {
-    const cardJSX = data.map(lift => {
+    const cardJSX = liftsToShow.map(lift => {
       const imageURL = getImage(lift.liftType);
       return (
         <>
@@ -165,9 +175,7 @@ const LoggedLifts = () => {
         </>
       );
     });
-  return cardJSX
-  }
-
+  
 
 
   return (
@@ -181,7 +189,7 @@ const LoggedLifts = () => {
           handleSelectLift={handleSelectLift}
           handleWeightSelect={handleWeightSelect}
         />
-        <div className="card-container">{getJSX(allLifts)}</div>
+        <div className="card-container">{cardJSX}</div>
      
       </>
      }

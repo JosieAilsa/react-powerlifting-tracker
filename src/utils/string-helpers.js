@@ -1,8 +1,8 @@
 import squat from "../assets/images/icons/lifticon-03.svg";
 import overHeadPress from "../assets/images/icons/lifticon-01.svg";
-import benchPress from "../assets/images/icons/lifticon-04.svg";
 import bentOverRow from "../assets/images/icons/lifticon-02.svg";
 import deadlift from "../assets/images/icons/lifticon-05.svg";
+import benchPress from "../assets/images/icons/lifticon-04.svg";
 
 export const showDifficulty = (difficulty) => {
   const toInteger = parseInt(difficulty);

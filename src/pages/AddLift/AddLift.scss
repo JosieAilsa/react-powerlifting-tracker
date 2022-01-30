@@ -22,6 +22,7 @@
     font-weight: 600;
     font-family: $head-font;
     font-size: $header-size;
+    flex-basis: 10%;
   }
   .weight__input{
     height:10vh;
@@ -33,6 +34,12 @@
     border-bottom-left-radius: 0.5vmin;
     z-index: 1;
     }
+  }
+  .difficulty{
+    flex-basis: 20%; 
+  }
+  .submit{
+    flex-basis: 10%;
   }
   
 
