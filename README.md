@@ -7,6 +7,7 @@
 
 ## Testing 🧪
 - Filter and string helpers united tested using Jest.
+- Some components tested with React Testing Library. 
 
 ## Styling & Conventions 
 - The app uses SCSS, the CSS preprocessor. 
