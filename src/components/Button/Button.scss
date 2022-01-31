@@ -2,8 +2,8 @@
 @use "../../assets/sass/variables.scss" as *;
 
 .btn {
-  background-color: $color-darker-blue;
-  color: $color-black;
+  background-color: $color-pink;
+    color: $color-black;
   border: none;
   border-radius: 5vmin;
   width: 15%;
@@ -17,8 +17,8 @@
   }
 
   &:hover {
-    background-color: $color-purple;
-    color: $color-background;
+    color: $color-pink;
+    background-color: $color-black;
   }
 
   &:active {

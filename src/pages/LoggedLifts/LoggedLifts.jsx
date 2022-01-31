@@ -5,7 +5,7 @@ import FilterContainer from "../../containers/FilterContainer/FilterContainer";
 import { showDifficulty, getImage } from "../../utils/string-helpers";
 import { useEffect } from "react";
 import {
-  checkIsDefaultFilter,
+  checkArraysAreEqual,
   findWeightRange,
   hasArrayItem,
   changeAllFilters,
@@ -28,22 +28,24 @@ const LoggedLifts = () => {
     if (weightSelect === "Reset") {
       // 1. Reset all filters to false, as "Select" means reset
       const updateFilter = changeAllFilters(currentFilter, "isChecked", false);
+      console.log("fired")
       setFilter(updateFilter);
       return;
     }
     // 2. Find the corresponding filter, and update isChecked to be true
-    // currentFilter.forEach(f => {
-    //   if (f.liftType == weightSelect) f.isChecked = true;
-    // })
-    // setFilter([...currentFilter])
-    const indexValue = currentFilter.findIndex(
-      (obj) => obj.liftType === weightSelect
-    );
-    const updateFilter = [...filterDefault];
-    updateFilter[indexValue].isChecked = true;
+    currentFilter.forEach(f => {
+      if (f.liftType == weightSelect) f.isChecked = true;
+    })
+    setFilter([...currentFilter])
+    console.log(currentFilter)
+    // const indexValue = currentFilter.findIndex(
+    //   (obj) => obj.liftType === weightSelect
+    // );
+    // const updateFilter = [...filterDefault];
+    // updateFilter[indexValue].isChecked = true;
 
-    // 3.
-    setFilter(updateFilter);
+    // // 3.
+    // setFilter(updateFilter);
   };
   //Weight range filter
   const handleWeightSelect = (e) => {
@@ -90,7 +92,7 @@ const LoggedLifts = () => {
     }
   };
 
-
+//Updates the lift to show once the fetch has complte 
   useEffect(() => {
     if(!isPending) {
       return 
@@ -100,7 +102,6 @@ const LoggedLifts = () => {
   
   //Deletes an entry one the delet button is pressed 
   useEffect(() => {
-    console.log(deleteId)
   if(isPending) {
     return 
   }
@@ -112,7 +113,6 @@ const LoggedLifts = () => {
       return res.json()
     })
     .catch(err => console.log(err));
-
     // window.location.reload;
     
 },
@@ -120,42 +120,47 @@ const LoggedLifts = () => {
 
 
 //Watches for any changes to the state of the filter array and filters all the lists returns from the fetch 
-  // useEffect(() => {
-  //   const isDefault = checkIsDefaultFilter(currentFilter, filterDefault);
-  //   //Guard to reset the filters if none selected
-  //   if (isDefault) {
-  //     console.log(currentFilter);
-  //     return setLiftsToShow(allLifts);
-  //   }
-  //   //Copy all the lifts currently shown
-  //   let newLiftsToShow = [...allLifts];
-  //   let currentLift = currentFilter.find((obj) => obj.isChecked);
-  //   if (currentLift) {
-  //     newLiftsToShow = allLifts.filter(
-  //       (item) => item.liftType === currentLift.liftType
-  //     );
-  //   }
-  //   //Find if weight input
-  //   let currentWeight = currentFilter.find((obj) => obj.weight);
-  //   if (currentWeight) {
-  //     newLiftsToShow = newLiftsToShow.filter((item) => {
-  //       const weightRange = findWeightRange(item.weight);
-  //       if (weightRange === currentWeight.weight) {
-  //         return true;
-  //       }
-  //     });
-  //     console.log(newLiftsToShow);
-  //   }
-  //   //Find if difficulty input
-  //   let currentDifficulty = currentFilter.find((obj) => obj.level);
-  //   if (currentDifficulty) {
-  //     //Filter from the original total lifts array to set back to new search each time
-  //     newLiftsToShow = newLiftsToShow.filter(
-  //       (item) => item.level === currentDifficulty.level
-  //     );
-  //   }
-  //   return setLiftsToShow(newLiftsToShow);
-  // }, [currentFilter]);
+  useEffect(() => {
+    // If fetch has not performed return 
+    if (isPending){
+      return 
+    }
+    const isDefault = checkArraysAreEqual(currentFilter, filterDefault);
+    //Guard to reset the filters if none selected
+    if (isDefault) {
+      return setLiftsToShow(allLifts);
+    }
+    //Copy all the lifts currently shown
+    let newLiftsToShow = [...allLifts];
+    //Find it there is a specific lift checked for first filter
+    let currentLift = currentFilter.find((obj) => obj.isChecked);
+    //If there is one checked, filter the list to show just that lift
+    if (currentLift) {
+      newLiftsToShow = allLifts.filter(
+        (item) => item.liftType === currentLift.liftType
+      );
+    }
+    //Now, in the same way, check the copy of allLifts to see if weight is checked
+    let currentWeight = currentFilter.find((obj) => obj.weight);
+    if (currentWeight) {
+      newLiftsToShow = newLiftsToShow.filter((item) => {
+        const weightRange = findWeightRange(item.weight);
+        if (weightRange === currentWeight.weight) {
+          return true;
+        }
+      });
+      console.log(newLiftsToShow);
+    }
+    //Find if difficulty input
+    let currentDifficulty = currentFilter.find((obj) => obj.level);
+    if (currentDifficulty) {
+      //Filter from the original total lifts array to set back to new search each time
+      newLiftsToShow = newLiftsToShow.filter(
+        (item) => item.level === currentDifficulty.level
+      );
+    }
+    return setLiftsToShow(newLiftsToShow);
+  }, [currentFilter]);
 
     const cardJSX = liftsToShow.map(lift => {
       const imageURL = getImage(lift.liftType);

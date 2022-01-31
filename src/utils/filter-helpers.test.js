@@ -1,4 +1,4 @@
-import { checkIsDefaultFilter, changeAllFilters } from "./filter-helpers";
+import { checkArraysAreEqual, changeAllFilters } from "./filter-helpers";
 
 describe("Filter test functions", () => {
   let filterA;
@@ -163,18 +163,18 @@ describe("Filter test functions", () => {
   describe("Test for checkIsFilterDefault", () => {
     it("Should return true if two arrays are the same", () => {
       //Act
-      const filterCheck = checkIsDefaultFilter(filterA, filterA);
+      const filterCheck = checkArraysAreEqual(filterA, filterA);
       //Assert
       expect(filterCheck).toBe(true);
     });
     it("Should return false if arrays are not the same", () => {
       //Act
-      const filterCheck = checkIsDefaultFilter(filterA, filterC);
+      const filterCheck = checkArraysAreEqual(filterA, filterC);
       //Assert
       expect(filterCheck).toBe(false);
     });
     it("Should throw an error arrays if both params are not arrays", () => {
-      expect(() => checkIsDefaultFilter(filterA, "not an array")).toThrowError(
+      expect(() => checkArraysAreEqual(filterA, "not an array")).toThrowError(
         `No valid array provided`
       );
     });

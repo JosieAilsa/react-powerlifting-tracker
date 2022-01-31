@@ -34,7 +34,7 @@ export const hasArrayItem = (arr, item) => {
   }
 };
 
-export const checkIsDefaultFilter = (curr, def) => {
+export const checkArraysAreEqual = (curr, def) => {
   if (!(Array.isArray(curr) && Array.isArray(def))) {
     throw new Error("No valid array provided");
   }
