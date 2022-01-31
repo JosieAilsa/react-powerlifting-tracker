@@ -10,5 +10,5 @@
 - Some components tested with React Testing Library. 
 
 ## Styling & Conventions 
-- The app uses SCSS, the CSS preprocessor. 
+- The app uses SCSS. 
 - Uses BEM naming conventions.
