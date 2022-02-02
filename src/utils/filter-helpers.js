@@ -1,4 +1,3 @@
-
 export const findWeightRange = (input) => {
   const toInteger = parseInt(input);
   if (toInteger > 180) {
@@ -58,8 +57,7 @@ export const changeAllFilters = (array, key, value) => {
   return newArr;
 };
 
-
-export const filterDefault = [
+const filterDefault = [
   {
     liftType: "Deadlift",
     isChecked: false,
@@ -96,17 +94,6 @@ export const filterDefault = [
     level: "",
   },
 ];
-export const weightRange = [
-  "0-20",
-  "21-40",
-  "41-60",
-  "61-80",
-  "81-100",
-  "101-120",
-  "121-140",
-  "161-180",
-  ">180",
-];
 
 export const filtersJSX = filterDefault.map((filterItem, i) => {
   return (
@@ -119,6 +106,18 @@ export const filtersJSX = filterDefault.map((filterItem, i) => {
     </option>
   );
 });
+
+export const weightRange = [
+  "0-20",
+  "21-40",
+  "41-60",
+  "61-80",
+  "81-100",
+  "101-120",
+  "121-140",
+  "161-180",
+  ">180",
+];
 
 export const weightRangeJSX = weightRange.map((weightRangeItem, i) => {
   return (

@@ -173,6 +173,12 @@ describe("Filter test functions", () => {
       //Assert
       expect(filterCheck).toBe(false);
     });
+    it("Should return false if arrays are not the same", () => {
+      //Act
+      const filterCheck = checkArraysAreEqual(filterA, filterB);
+      //Assert
+      expect(filterCheck).toBe(false);
+    });
     it("Should throw an error arrays if both params are not arrays", () => {
       expect(() => checkArraysAreEqual(filterA, "not an array")).toThrowError(
         `No valid array provided`

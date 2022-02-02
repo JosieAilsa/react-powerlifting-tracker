@@ -9,26 +9,59 @@ import {
   findWeightRange,
   hasArrayItem,
   changeAllFilters,
-  filterDefault,
-  weightRange
 } from "../../utils/filter-helpers";
 import useFetch from "../../utils/useFetch";
 
 
 const LoggedLifts = () => {
+  const filterDefault = [
+    {
+      liftType: "Deadlift",
+      isChecked: false,
+      weight: "",
+      difficulty: "",
+      level: "",
+    },
+    {
+      liftType: "Squat",
+      isChecked: false,
+      weight: "",
+      difficulty: "",
+      level: "",
+    },
+    {
+      liftType: "Overhead press",
+      isChecked: false,
+      weight: "",
+      difficulty: "",
+      level: "",
+    },
+    {
+      liftType: "Bent-over row",
+      isChecked: false,
+      weight: "",
+      difficulty: "",
+      level: "",
+    },
+    {
+      liftType: "Bench press",
+      isChecked: false,
+      weight: "",
+      difficulty: "",
+      level: "",
+    },
+  ];
   // Set state for lifts to show and filters
   const [liftsToShow, setLiftsToShow] = useState([]);
-  const [currentFilter, setFilter] = useState(filterDefault);  
-  const  [deleteId, setDeleteId] = useState()
+  const [currentFilter, setFilter] = useState([...filterDefault]);  
+  const  [deleteId, setDeleteId] = useState(null)
   const {allLifts, isPending, isError} = useFetch("https://instant-run-338811.nw.r.appspot.com/lifts/all")
-
-  //Type of lift fliter
+  
   const handleSelectLift = (e) => {
     const weightSelect = e.target.value;
     if (weightSelect === "Reset") {
       // 1. Reset all filters to false, as "Select" means reset
       const updateFilter = changeAllFilters(currentFilter, "isChecked", false);
-      console.log("fired")
       setFilter(updateFilter);
       return;
     }
@@ -36,24 +69,16 @@ const LoggedLifts = () => {
     currentFilter.forEach(f => {
       if (f.liftType == weightSelect) f.isChecked = true;
     })
-    setFilter([...currentFilter])
-    console.log(currentFilter)
-    // const indexValue = currentFilter.findIndex(
-    //   (obj) => obj.liftType === weightSelect
-    // );
-    // const updateFilter = [...filterDefault];
-    // updateFilter[indexValue].isChecked = true;
-
-    // // 3.
-    // setFilter(updateFilter);
+    return setFilter([...currentFilter])
   };
+  
   //Weight range filter
   const handleWeightSelect = (e) => {
     const weightInput = e.target.value;
-    if (weightInput === "Select") {
+    if (weightInput === "Reset") {
       const updateFilter = changeAllFilters(currentFilter, "weight", "");
       setFilter(updateFilter);
-      return console.log(currentFilter);
+      return;
     }
     const indexValue = hasArrayItem(currentFilter, weightInput);
     if (indexValue) {
@@ -68,7 +93,7 @@ const LoggedLifts = () => {
         weightInput
       );
       setFilter(updateFilter);
-      return console.log(currentFilter);
+      return;
     }
   };
   //Difficulty slider
@@ -98,11 +123,11 @@ const LoggedLifts = () => {
       return 
     }
     setLiftsToShow([...allLifts])
-  }, [allLifts]);
+  }, [allLifts, isPending]);
   
   //Deletes an entry one the delet button is pressed 
   useEffect(() => {
-  if(isPending) {
+  if(!deleteId) {
     return 
   }
   fetch(`https://instant-run-338811.nw.r.appspot.com/lifts/${deleteId}`, { 
@@ -119,16 +144,20 @@ const LoggedLifts = () => {
  [deleteId])
 
 
-//Watches for any changes to the state of the filter array and filters all the lists returns from the fetch 
+//Watches for any changes to the state of the filter array and filters all the lists returned from the fetch 
   useEffect(() => {
-    // If fetch has not performed return 
+    //1. If fetch has not performed return 
     if (isPending){
       return 
     }
+    //2. Guard check if the filters have nothing selected =
     const isDefault = checkArraysAreEqual(currentFilter, filterDefault);
-    //Guard to reset the filters if none selected
+    console.log(isDefault)
+    console.log(currentFilter)
+    console.log(filterDefault)
+    //1. Check if the default filters are applied and set to all lifts if possible... 
     if (isDefault) {
-      return setLiftsToShow(allLifts);
+      return setLiftsToShow([...allLifts]);
     }
     //Copy all the lifts currently shown
     let newLiftsToShow = [...allLifts];
@@ -159,7 +188,8 @@ const LoggedLifts = () => {
         (item) => item.level === currentDifficulty.level
       );
     }
-    return setLiftsToShow(newLiftsToShow);
+    setLiftsToShow(newLiftsToShow); 
+    return;
   }, [currentFilter]);
 
     const cardJSX = liftsToShow.map(lift => {
