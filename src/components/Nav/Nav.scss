@@ -2,7 +2,7 @@
 @use "../../assets/sass/variables.scss" as *;
 
 .nav {
-  background-color: $color-background;
+  background-color:$color-pink-darker;
   grid-area: 1/1/1/13;
   display: flex;
   align-content: flex-end;

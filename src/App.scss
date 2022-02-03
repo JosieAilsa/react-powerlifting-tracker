@@ -2,6 +2,7 @@
 @use "./assets/sass/typography.scss" as *;
 @use "./assets/sass/reset.scss" as *;
 
+
 .App {
   background-color: $color-background;
 }
@@ -12,4 +13,6 @@ main {
   grid-template-rows: repeat(8, 1fr);
   height: 100vh;
   background-color: $color-background;
+  background-image: url("./assets/images/anastase-maragos-aclkvEMIfL8-unsplash.png");
+  background-size: cover;
 }
