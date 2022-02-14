@@ -41,6 +41,7 @@ const AddLift = ({
       <WeightInput handleWeightInput={handleWeightInput} />
       <div class="difficulty">
         <h4 className="difficulty__title">How did it feel?</h4>
+        <span>Move the level slider to set the difficulty</span>
         <LevelSlider handleDifficultyInput={handleDifficultyInput} />
       </div>
       <Button  buttonClass = "submit" type="submit" buttonText= {buttonText} handleSubmit = {handleButtonClick}/>

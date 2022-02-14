@@ -3,6 +3,7 @@
 
 .nav {
   background-color:$color-pink-darker;
+  z-index: 1;
   grid-area: 1/1/1/13;
   display: flex;
   align-content: flex-end;
@@ -13,18 +14,18 @@
   -moz-box-shadow: 0 8px 6px -6px rgba(34, 0, 0, 0.109);
   box-shadow: 0 8px 6px -6px rgba(34, 0, 0, 0.109);
 
-  &__logo {
+  .nav__logo {
     height: 60%;
   }
 
-  &__hamburger {
+  .nav__hamburger {
     stroke: $color-grey;
     @media only screen and (min-width: 600px) {
       display: none;
     }
   }
 
-  &__container {
+  .nav__container {
     display: flex;
     width: 35vw;
     list-style-type: none;

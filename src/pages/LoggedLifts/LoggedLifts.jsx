@@ -59,15 +59,18 @@ const LoggedLifts = () => {
   
   const handleSelectLift = (e) => {
     const weightSelect = e.target.value;
+    // 1. Reset all filters to false
+    const updateFilter = changeAllFilters(currentFilter, "isChecked", false);
+    setFilter(updateFilter);
+    //2. Return if the filter is set to default
     if (weightSelect === "Reset") {
-      // 1. Reset all filters to false, as "Select" means reset
-      const updateFilter = changeAllFilters(currentFilter, "isChecked", false);
-      setFilter(updateFilter);
-      return;
+    return;
     }
     // 2. Find the corresponding filter, and update isChecked to be true
-    currentFilter.forEach(f => {
+    currentFilter.map(f => {
+      console.log(f)
       if (f.liftType == weightSelect) f.isChecked = true;
+      console.log(f)
     })
     return setFilter([...currentFilter])
   };
@@ -152,9 +155,6 @@ const LoggedLifts = () => {
     }
     //2. Guard check if the filters have nothing selected =
     const isDefault = checkArraysAreEqual(currentFilter, filterDefault);
-    console.log(isDefault)
-    console.log(currentFilter)
-    console.log(filterDefault)
     //1. Check if the default filters are applied and set to all lifts if possible... 
     if (isDefault) {
       return setLiftsToShow([...allLifts]);

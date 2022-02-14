@@ -1,3 +1,6 @@
+@use "../../assets/sass/variables.scss" as *;
+@use "../../assets/sass/typography.scss" as *;
+
 .liftselect {
   width: 50%;
   height: 50%;
@@ -8,5 +11,10 @@
   flex-direction: column;
   &__label {
     padding-bottom: 1vmin;
+  }
+  select{
+    background-color: $color-purple;
+    color: $color-pink;
+    font-family: $body-font;
   }
 }

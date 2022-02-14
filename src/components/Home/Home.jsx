@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Nav from "../Nav/Nav";
 import Routing from "../../containers/Routes.jsx/Routing";
-import useFetch from "../../utils/useFetch";
 
 import { showDifficulty } from "../../utils/string-helpers";
 
 const Home = () => {
   const [currentLift, setCurrentLift] = useState({});
-  const [shouldFetch, setShouldFetch] = useState(false)
  
   const handleLiftSelect = (e) => {
     const currentLift = e.target.value;

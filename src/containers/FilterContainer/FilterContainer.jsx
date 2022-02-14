@@ -27,8 +27,8 @@ const FilterContainer = ({
         <div className="difficulty-container">
           <Slider
             className="difficulty-filter"
-            bottomTitle="easy"
-            topTitle="hard"
+            bottomTitle="Very easy"
+            topTitle="Very hard"
             eventHandle={handleDifficultySelect}
           />
         </div>
