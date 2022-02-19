@@ -67,11 +67,11 @@ const LoggedLifts = () => {
     return;
     }
     // 2. Find the corresponding filter, and update isChecked to be true
-    currentFilter.map(f => {
-      console.log(f)
-      if (f.liftType == weightSelect) f.isChecked = true;
-      console.log(f)
-    })
+    // currentFilter.map(f => {
+    //   console.log(f)
+    //   if (f.liftType == weightSelect) f.isChecked = true;
+    //   console.log(f)
+    // })
     return setFilter([...currentFilter])
   };
   
@@ -88,7 +88,6 @@ const LoggedLifts = () => {
       const updateFilter = [...currentFilter];
       updateFilter[indexValue].weight = weightInput;
       setFilter(updateFilter);
-      return;
     } else {
       const updateFilter = changeAllFilters(
         currentFilter,
@@ -96,7 +95,6 @@ const LoggedLifts = () => {
         weightInput
       );
       setFilter(updateFilter);
-      return;
     }
   };
   //Difficulty slider
@@ -122,13 +120,12 @@ const LoggedLifts = () => {
 
 //Updates the lift to show once the fetch has complte 
   useEffect(() => {
-    if(!isPending) {
-      return 
-    }
+    if(!allLifts || allLifts.length > 0) return 
     setLiftsToShow([...allLifts])
-  }, [allLifts, isPending]);
+  }, [allLifts]);
   
   //Deletes an entry one the delet button is pressed 
+  // get rid of useEffect
   useEffect(() => {
   if(!deleteId) {
     return 
