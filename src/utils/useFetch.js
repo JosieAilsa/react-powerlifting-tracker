@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import data from "../assets/data/data"
 
 const useFetch = (url) => {
     //State to check if we have the data retrieved from API or not
@@ -13,7 +13,7 @@ const useFetch = (url) => {
             fetch(url)
                 .then(res => {
                     if(!res.ok) {
-                        throw Error ("Could not fetch")
+                        Promise.reject("problem!")
                     }
                     console.log(res)
                     return res.json()
@@ -25,8 +25,9 @@ const useFetch = (url) => {
                     })
                     .catch(err => {
                         console.log(err.message)
+                        setAllLifts(data)
                         setIsPending(false)
-                        setIsError(err.message)
+                        // setIsError(err.message)
                     })
             }, [url])
    
