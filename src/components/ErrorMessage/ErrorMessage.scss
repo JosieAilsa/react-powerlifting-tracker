@@ -1,0 +1,25 @@
+@use "../../assets/sass/typography.scss" as *;
+@use "../../assets/sass/variables.scss" as *;
+
+.error-message{
+    margin: auto;
+    grid-area: 1/1/12/13;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+
+
+    > * {
+        position: relative;
+        width: fit-content;
+        top: 50%;
+        padding: 1rem;
+        border-radius: 1rem;
+        z-index: 3;
+        margin: auto;
+        background-color: $color-background-transparent;
+    }
+    .error-message__title{
+        text-align: center;
+    }
+}

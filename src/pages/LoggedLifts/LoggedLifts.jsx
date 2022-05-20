@@ -12,6 +12,7 @@ import {
 } from "../../utils/filter-helpers";
 import useFetch from "../../utils/useFetch";
 import ErrorBoundary from "../../containers/ErrorBoundary/ErrorBoundary";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 
 const LoggedLifts = () => {
@@ -213,6 +214,7 @@ const LoggedLifts = () => {
   return (
   <ErrorBoundary>
      {isPending && <h3>Loading...</h3>}
+     {isError && <ErrorMessage/>}
      {!isPending && 
         <>
           <FilterContainer
