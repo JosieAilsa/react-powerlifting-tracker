@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-powerlifting-tracker/static/css/main.2286a99e.chunk.css",
-    "main.js": "/react-powerlifting-tracker/static/js/main.9d03ff56.chunk.js",
-    "main.js.map": "/react-powerlifting-tracker/static/js/main.9d03ff56.chunk.js.map",
+    "main.js": "/react-powerlifting-tracker/static/js/main.3257b50a.chunk.js",
+    "main.js.map": "/react-powerlifting-tracker/static/js/main.3257b50a.chunk.js.map",
     "runtime-main.js": "/react-powerlifting-tracker/static/js/runtime-main.57a7d659.js",
     "runtime-main.js.map": "/react-powerlifting-tracker/static/js/runtime-main.57a7d659.js.map",
     "static/js/2.589a5a89.chunk.js": "/react-powerlifting-tracker/static/js/2.589a5a89.chunk.js",
@@ -26,6 +26,6 @@
     "static/js/runtime-main.57a7d659.js",
     "static/js/2.589a5a89.chunk.js",
     "static/css/main.2286a99e.chunk.css",
-    "static/js/main.9d03ff56.chunk.js"
+    "static/js/main.3257b50a.chunk.js"
   ]
 }
