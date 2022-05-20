@@ -20,8 +20,9 @@ const LoggedLifts = () => {
   // Set state for lifts to show and filters
   const [currentFilter, setFilter] = useState([...filterDefault]);  
   const  [deleteId, setDeleteId] = useState(null)
-  const {allLifts, isPending, isError} = useFetch("https://instant-run-338811.nw.r.appspot.com/lifts/all")
+  const {allLifts, isPending} = useFetch("https://instant-run-338811.nw.r.appspot.com/lifts/all")
   const [liftsToShow, setLiftsToShow] = useState(allLifts);
+  const [showModal, setShowModal] = useState(true);
   
   const handleSelectLift = (e) => {
     const weightSelect = e.target.value;
@@ -173,14 +174,15 @@ const LoggedLifts = () => {
         </>
       );
     });
+
+ 
     
 
   return (
   <ErrorBoundary>
-     {isPending && <h3>Loading...</h3>}
-     {isError && <ErrorMessage/>}
      {!isPending && 
         <>
+        {showModal && <ErrorMessage handleModalClick = {() => setShowModal(!showModal)}/>}
           <FilterContainer
             handleDifficultySelect={handleDifficultySelect}
             handleSelectLift={handleSelectLift}
