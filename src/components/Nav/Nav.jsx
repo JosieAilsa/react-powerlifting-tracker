@@ -58,10 +58,13 @@ const Nav = () => {
       </svg>
       <ul className="nav__container">
         <li className="nav__link">
-          <Link to= "/">Add Lift</Link>
+          <Link to="/">Home</Link>
         </li>
         <li className="nav__link">
-          <Link to="/#/lifts">Logged lifts</Link>
+          <Link to= "/create">Add Lift</Link>
+        </li>
+        <li className="nav__link">
+          <Link to="/lifts">Logged lifts</Link>
         </li>
       </ul>
     </nav>

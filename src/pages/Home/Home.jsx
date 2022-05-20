@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Nav from "../Nav/Nav";
+import Nav from "../../components/Nav/Nav";
 import Routing from "../../containers/Routes.jsx/Routing";
 
 import { showDifficulty } from "../../utils/string-helpers";

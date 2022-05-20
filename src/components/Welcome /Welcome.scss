@@ -1,0 +1,22 @@
+@use "../../assets/sass/typography.scss" as *;
+@use "../../assets/sass/variables.scss" as *;
+
+.welcome{
+    margin: auto;
+    grid-area: 1/1/12/13;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    .welcome__wrapper{
+        position: relative;
+        width: fit-content;
+        top: 25%;
+        padding: 1rem;
+        border-radius: 1rem;
+        z-index: 3;
+        margin: auto;
+        width: 20rem;
+        background-color: $color-background-transparent;
+        text-align: center;
+    }
+}
