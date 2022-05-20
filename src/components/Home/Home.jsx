@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Nav from "../Nav/Nav";
 import Routing from "../../containers/Routes.jsx/Routing";
+import ErrorBoundary from "../../containers/ErrorBoundary/ErrorBoundary";
 
 import { showDifficulty } from "../../utils/string-helpers";
 
@@ -57,12 +58,12 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <Routing 
-        handleLiftSelect={handleLiftSelect}
-        handleWeightInput={handleWeightInput}
-        handleDifficultyInput={handleDifficultyInput}
-        handleSubmit={handleSubmit}
-      />
+        <Routing 
+          handleLiftSelect={handleLiftSelect}
+          handleWeightInput={handleWeightInput}
+          handleDifficultyInput={handleDifficultyInput}
+          handleSubmit={handleSubmit}
+        />
     </>
   );
 };

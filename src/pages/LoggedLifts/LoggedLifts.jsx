@@ -11,6 +11,7 @@ import {
   changeAllFilters,
 } from "../../utils/filter-helpers";
 import useFetch from "../../utils/useFetch";
+import ErrorBoundary from "../../containers/ErrorBoundary/ErrorBoundary";
 
 
 const LoggedLifts = () => {
@@ -207,25 +208,22 @@ const LoggedLifts = () => {
         </>
       );
     });
-  
-
+    
 
   return (
-    <>
+  <ErrorBoundary>
      {isPending && <h3>Loading...</h3>}
-     {isError && <h3>Error</h3>}
-     {!isPending &&
-      <>
-        <FilterContainer
-          handleDifficultySelect={handleDifficultySelect}
-          handleSelectLift={handleSelectLift}
-          handleWeightSelect={handleWeightSelect}
-        />
-        <div className="card-container">{cardJSX}</div>
-     
-      </>
-     }
-    </>
+     {!isPending && 
+        <>
+          <FilterContainer
+            handleDifficultySelect={handleDifficultySelect}
+            handleSelectLift={handleSelectLift}
+            handleWeightSelect={handleWeightSelect}
+          />
+          <div className="card-container">{cardJSX}</div>
+         </>
+}
+  </ErrorBoundary>
   );
 };
 export default LoggedLifts;

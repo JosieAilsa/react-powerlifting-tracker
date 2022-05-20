@@ -1,6 +1,7 @@
 import AddLift from "../../pages/AddLift/AddLift";
 import LoggedLifts from "../../pages/LoggedLifts/LoggedLifts"
 import { Routes, Route } from "react-router-dom";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 const Routing = ({handleLiftSelect, handleWeightInput, handleDifficultyInput, handleSubmit}) => {
     return (
@@ -19,8 +20,7 @@ const Routing = ({handleLiftSelect, handleWeightInput, handleDifficultyInput, ha
         <Route
           path= "/lifts"
           element={
-          <LoggedLifts
-          />}
+                <LoggedLifts/>}
         />
       </Routes> 
     );
