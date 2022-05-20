@@ -173,9 +173,8 @@ const LoggedLifts = () => {
     if (currentWeight) {
       newLiftsToShow = newLiftsToShow.filter((item) => {
         const weightRange = findWeightRange(item.weight);
-        if (weightRange === currentWeight.weight) {
-          return true;
-        }
+        if (weightRange === currentWeight.weight) return true;
+        return false;
       });
       console.log(newLiftsToShow);
     }
@@ -189,7 +188,7 @@ const LoggedLifts = () => {
     }
     setLiftsToShow(newLiftsToShow); 
     return;
-  }, [currentFilter]);
+  }, [currentFilter,allLifts,filterDefault, isPending]);
 
     const cardJSX = liftsToShow.map(lift => {
       const imageURL = getImage(lift.liftType);

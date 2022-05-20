@@ -2,7 +2,6 @@ import "./WeightInput.scss";
 import { useState } from "react";
 
 const WeightInput = ({ handleWeightInput }) => {
-  const [weight, setWeight] = useState();
 
   return (
     <div className="weightcontainer">
@@ -12,7 +11,7 @@ const WeightInput = ({ handleWeightInput }) => {
           type="text"
           className="input"
           placeholder="Enter the weight you lifted here"
-          value={weight}
+          value={null}
           onChange={handleWeightInput}
         />
         <h5 className="input__kgs">KGs</h5>

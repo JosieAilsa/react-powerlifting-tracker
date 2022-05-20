@@ -1,4 +1,3 @@
-import { useState } from "react";
 import FilterItems from "../../components/FilterItems/FilterItems";
 import Slider from "../../components/Slider/Slider";
 import "./FilterContainer.scss";

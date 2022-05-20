@@ -45,6 +45,7 @@ export const checkArraysAreEqual = (curr, def) => {
       //return true if the two arrays are the same
       return true;
     }
+    return false;
   });
   return isDefault;
 };
