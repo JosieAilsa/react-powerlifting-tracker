@@ -1,5 +1,4 @@
 import "./WeightInput.scss";
-import { useState } from "react";
 
 const WeightInput = ({ handleWeightInput }) => {
 

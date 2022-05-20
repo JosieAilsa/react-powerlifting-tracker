@@ -3,7 +3,7 @@ import "./Button.scss";
 const Button = ({buttonText, handleSubmit, className}) => {
   return (
     <>
-      <button className = {className} type="reset" onClick={handleSubmit}>{buttonText}</button>
+      <button className = {`btn ${className}`} type="reset" onClick={handleSubmit}>{buttonText}</button>
     </>
   );
 };

@@ -188,7 +188,8 @@ const LoggedLifts = () => {
     }
     setLiftsToShow(newLiftsToShow); 
     return;
-  }, [currentFilter,allLifts,filterDefault, isPending]);
+    // eslint-disable-next-line
+  }, [currentFilter]);
 
     const cardJSX = liftsToShow.map(lift => {
       const imageURL = getImage(lift.liftType);

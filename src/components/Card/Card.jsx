@@ -7,7 +7,7 @@ const Card = ({id, liftType, weight, difficulty, level, date, img, setDeleteId})
         <img src={cross} className="delete-button__icon" alt="delete lift" />
       </button>
       <h4 className="card__title">{liftType}</h4>
-      <img src={img} className="card__icon"></img>
+      <img src={img} className="card__icon" alt={liftType}></img>
       <div className="card__text">
         <p className="card__info">Weight:</p>
         <p className="card__info">{weight}kgs</p>

@@ -1,6 +1,4 @@
 import "./SelectLift.scss";
-import { useState } from "react";
-
 const SelectLift = ({ liftsArr, handleLiftSelect }) => {
 
   const getLiftRadio = liftsArr.map((lift, i) => {
