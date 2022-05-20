@@ -58,7 +58,7 @@ export const changeAllFilters = (array, key, value) => {
   return newArr;
 };
 
-const filterDefault = [
+export const filterDefault = [
   {
     liftType: "Deadlift",
     isChecked: false,

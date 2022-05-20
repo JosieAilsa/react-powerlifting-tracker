@@ -9,6 +9,7 @@ import {
   findWeightRange,
   hasArrayItem,
   changeAllFilters,
+  filterDefault
 } from "../../utils/filter-helpers";
 import useFetch from "../../utils/useFetch";
 import ErrorBoundary from "../../containers/ErrorBoundary/ErrorBoundary";
@@ -16,48 +17,11 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 
 const LoggedLifts = () => {
-  const filterDefault = [
-    {
-      liftType: "Deadlift",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-    {
-      liftType: "Squat",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-    {
-      liftType: "Overhead press",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-    {
-      liftType: "Bent-over row",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-    {
-      liftType: "Bench press",
-      isChecked: false,
-      weight: "",
-      difficulty: "",
-      level: "",
-    },
-  ];
   // Set state for lifts to show and filters
-  const [liftsToShow, setLiftsToShow] = useState([]);
   const [currentFilter, setFilter] = useState([...filterDefault]);  
   const  [deleteId, setDeleteId] = useState(null)
   const {allLifts, isPending, isError} = useFetch("https://instant-run-338811.nw.r.appspot.com/lifts/all")
+  const [liftsToShow, setLiftsToShow] = useState(allLifts);
   
   const handleSelectLift = (e) => {
     const weightSelect = e.target.value;
