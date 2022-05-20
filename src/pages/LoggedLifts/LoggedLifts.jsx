@@ -1,4 +1,4 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import "./LoggedLifts.scss";
 import Card from "../../components/Card/Card";
 import FilterContainer from "../../containers/FilterContainer/FilterContainer";
