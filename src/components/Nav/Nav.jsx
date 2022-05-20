@@ -61,7 +61,7 @@ const Nav = () => {
           <Link to= "/">Add Lift</Link>
         </li>
         <li className="nav__link">
-          <Link to="/lifts">Logged lifts</Link>
+          <Link to="/#/lifts">Logged lifts</Link>
         </li>
       </ul>
     </nav>
