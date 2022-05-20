@@ -6,7 +6,7 @@ const Routing = ({handleLiftSelect, handleWeightInput, handleDifficultyInput, ha
     return (
         <Routes>
         <Route
-          path="/create"
+          path exact="/"
           element={
             <AddLift
                 handleLiftSelect={handleLiftSelect}
@@ -17,7 +17,7 @@ const Routing = ({handleLiftSelect, handleWeightInput, handleDifficultyInput, ha
           }
         />
         <Route
-          path= "/allLifts"
+          path exact= "/lifts"
           element={
                 <LoggedLifts/>}
         />
